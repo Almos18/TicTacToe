@@ -27,6 +27,6 @@ public class Main {
     {
         int x = input.charAt(0);
         int y = input.charAt(1);
-        field
+       // field
     }
 }
