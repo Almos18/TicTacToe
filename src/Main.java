@@ -2,7 +2,6 @@ import javax.swing.*;
 
 public class Main {
     static char[][] field = new char[3][3];
-
     public static void main(String[] args)
     {
         String input;
@@ -21,17 +20,17 @@ public class Main {
             winner = checkWin();
             System.out.println(winner);
 
-            String displayField = "";
+            StringBuilder displayField = new StringBuilder();
 
             for(int i=0;i<3;i++)
             {
                 for(int j=0;j<3;j++)
                 {
-                    displayField += field[i][j] + " ";
+                    displayField.append(field[i][j]).append(" ");
                 }
-                displayField += "\n";
+                displayField.append("\n");
             }
-            JOptionPane.showMessageDialog(null,displayField);
+            JOptionPane.showMessageDialog(null, displayField.toString());
         }
 
 
