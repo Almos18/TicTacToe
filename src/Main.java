@@ -1,8 +1,7 @@
-import java.util.Scanner;
+import javax.swing.*;
 
 public class Main {
     static char[][] field = new char[3][3];
-    static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args)
     {
@@ -11,16 +10,28 @@ public class Main {
         boolean winner = false;
 
         while(!winner) {
-            System.out.println("Where would O like to move? (Enter two numbers between 0 and 2)");
-            input = scanner.nextLine();
+            input = JOptionPane.showInputDialog(null,"Where would O like to move? (Enter two numbers within the range 0-2)");
             setValue(input, player);
             player = 'X';
 
-            System.out.println("Where would X like to move? (Enter two numbers between 0 and 2)");
-            input = scanner.nextLine();
+            input = JOptionPane.showInputDialog(null, "Where would X like to move? (Enter two numbers within the range 0-2)");
             setValue(input, player);
+            player = 'O';
 
             winner = checkWin();
+            System.out.println(winner);
+
+            String displayField = "";
+
+            for(int i=0;i<3;i++)
+            {
+                for(int j=0;j<3;j++)
+                {
+                    displayField += field[i][j] + " ";
+                }
+                displayField += "\n";
+            }
+            JOptionPane.showMessageDialog(null,displayField);
         }
 
 
@@ -32,9 +43,6 @@ public class Main {
             }
             System.out.print("\n");
         }
-
-
-
     }
 
     public static void setValue(String input, char player)
@@ -42,13 +50,20 @@ public class Main {
         int x=Character.getNumericValue(input.charAt(0));
         int y=Character.getNumericValue(input.charAt(1));
 
-            while(field[x][y] == 'X' || field[x][y] == 'O' )
-            {
-                System.out.println("The space is already occupied, please enter another");
-                input = scanner.nextLine();
-                x=Character.getNumericValue(input.charAt(0));
-                y=Character.getNumericValue(input.charAt(1));
-            }
+        while((x > 2 || x < 0) || (y > 2 || y < 0))
+        {
+            input = JOptionPane.showInputDialog(null,"Out of bounds, enter two numbers within the range 0-2");
+            x=Character.getNumericValue(input.charAt(0));
+            y=Character.getNumericValue(input.charAt(1));
+        }
+
+        while(field[x][y] == 'X' || field[x][y] == 'O')
+        {
+            input = JOptionPane.showInputDialog(null,"The space is already occupied, please enter another");
+            x=Character.getNumericValue(input.charAt(0));
+            y=Character.getNumericValue(input.charAt(1));
+        }
+
 
         field[x][y] = player;
     }
