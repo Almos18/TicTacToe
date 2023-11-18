@@ -18,9 +18,7 @@ public class Main {
             setValue(input, player);
             displayField(display);
             display = "";
-            stopRound = checkWin();
-
-            if(!stopRound)
+            if(!checkWin())
             {
                 player = 'X';
             input = JOptionPane.showInputDialog(null, "Where would X like to move? " +
@@ -39,14 +37,16 @@ public class Main {
 
         public static void displayField(String display)
         {
-            for (int i=0; i<3; i++)
+            StringBuilder displayBuilder = new StringBuilder(display);
+            for (int i = 0; i<3; i++)
             {
                 for (int j=0; j<3; j++)
                 {
-                    display += (field[i][j] + " ");
+                    displayBuilder.append(field[i][j]).append(" ");
                 }
-                display += ("\n");
+                displayBuilder.append("\n");
             }
+            display = displayBuilder.toString();
             JOptionPane.showMessageDialog(null, display);
         }
 
@@ -78,19 +78,19 @@ public class Main {
         boolean checkHorizontals;
         boolean checkVerticals;
         boolean checkDiagonals;
-        checkVerticals = (((Character.isLetter(field[0][0])) && (Character.isLetter(field[0][1])) &&
-                (Character.isLetter(field[0][2]))) ||
-                ((Character.isLetter(field[1][0])) && (Character.isLetter(field[1][1])) &&
-                (Character.isLetter(field[1][2]))) ||
-                ((Character.isLetter(field[2][0])) && (Character.isLetter(field[2][1])) &&
-                (Character.isLetter(field[2][2]))));
+        checkVerticals = ((field[0][0] == 'X') && (field[0][1] == 'X') && (field[0][2] == 'X') ||
+                ((field[0][0] == 'O') && (field[0][1] == 'O') && (field[0][2] == 'O') ||
+                (field[1][0] == 'X') && (field[1][1] == 'X') && (field[1][2] == 'X') ||
+                ((field[1][0] == 'O') && (field[1][1] == 'O') && (field[1][2] == 'O') ||
+                ((field[2][0] == 'X') && (field[2][1] == 'X') && (field[2][2] == 'X') ||
+                (field[2][0] == 'O') && (field[2][1] == 'O') && (field[2][2] == 'O')))));
 
-        checkHorizontals = (((Character.isLetter(field[0][0])) && (Character.isLetter(field[1][0])) &&
-                (Character.isLetter(field[2][0]))) ||
-                ((Character.isLetter(field[0][1])) && (Character.isLetter(field[1][1])) &&
-                (Character.isLetter(field[2][1]))) ||
-                ((Character.isLetter(field[0][2])) && (Character.isLetter(field[1][2])) &&
-                (Character.isLetter(field[2][2]))));
+        checkHorizontals = ((field[0][0] == 'X') && (field[1][0] == 'X') && (field[2][0] == 'X') ||
+                ((field[0][1] == 'O') && (field[1][1] == 'O') && (field[2][1] == 'O') ||
+                (field[0][2] == 'X') && (field[1][2] == 'X') && (field[2][2] == 'X') ||
+                ((field[0][0] == 'O') && (field[1][0] == 'O') && (field[2][0] == 'O') ||
+                ((field[0][1] == 'X') && (field[1][1] == 'X') && (field[2][1] == 'X') ||
+                (field[0][2] == 'O') && (field[1][2] == 'O') && (field[2][2] == 'O')))));
 
         checkDiagonals = ((field[0][0] == 'X') && (field[1][1] == 'X') && (field[2][2] == 'X') ||
                 ((field[0][0] == 'O') && (field[1][1] == 'O') && (field[2][2] == 'O') ||
