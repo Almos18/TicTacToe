@@ -85,12 +85,12 @@ public class Main {
                 ((Character.isLetter(field[2][0])) && (Character.isLetter(field[2][1])) &&
                 (Character.isLetter(field[2][2]))));
 
-        checkHorizontals = ((field[0][0] == 'X') && (field[1][0] == 'X') && (field[2][0] == 'X') ||
-                ((field[0][0] == 'O') && (field[1][0] == 'O') && (field[2][0] == 'O') ||
-                (field[0][1] == 'X') && (field[1][1] == 'X') && (field[2][1] == 'X') ||
-                ((field[0][1] == 'O') && (field[1][1] == 'O') && (field[2][1] == 'O') ||
-                (field[0][2] == 'X') && (field[1][2] == 'X') && (field[2][2] == 'X') ||
-                (field[0][2] == 'O') && (field[1][2] == 'O') && (field[2][2] == 'O'))));
+        checkHorizontals = (((Character.isLetter(field[0][0])) && (Character.isLetter(field[1][0])) &&
+                (Character.isLetter(field[2][0]))) ||
+                ((Character.isLetter(field[0][1])) && (Character.isLetter(field[1][1])) &&
+                (Character.isLetter(field[2][1]))) ||
+                ((Character.isLetter(field[0][2])) && (Character.isLetter(field[1][2])) &&
+                (Character.isLetter(field[2][2]))));
 
         checkDiagonals = ((field[0][0] == 'X') && (field[1][1] == 'X') && (field[2][2] == 'X') ||
                 ((field[0][0] == 'O') && (field[1][1] == 'O') && (field[2][2] == 'O') ||
