@@ -42,7 +42,7 @@ public class Main {
             {
                 for (int j=0; j<3; j++)
                 {
-                    displayBuilder.append(field[i][j]).append(" ");
+                    displayBuilder.append(field[j][i]).append(" ");
                 }
                 displayBuilder.append("\n");
             }
