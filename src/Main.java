@@ -59,16 +59,24 @@ public class Main {
         {
             valid = true;
 
-
-
-            if (input.length()>2) {
-                JOptionPane.showMessageDialog(null, "The input is too long");
+            if (input.length()!=2) {
+                JOptionPane.showMessageDialog(null, "The input is too long or too short");
                 valid = false;
             }
 
-            if ((Character.getNumericValue(input.charAt(0)) > 2) || Character.getNumericValue(input.charAt(1)) > 2) {
+            if (valid && (!Character.isDigit(input.charAt(0)) || !Character.isDigit(input.charAt(1)))) {
+                JOptionPane.showMessageDialog(null, "The input is not a number");
+                valid = false;
+            }
+
+            if (valid && ((Character.getNumericValue(input.charAt(0)) > 2) || Character.getNumericValue(input.charAt(1)) > 2)) {
                 JOptionPane.showMessageDialog(null, "Out of bounds, " +
                         "enter two numbers within the range 0-2");
+                valid = false;
+            }
+
+            if (valid && (field[(Character.getNumericValue(input.charAt(0)))][(Character.getNumericValue(input.charAt(1)))] == 'X' || field[(Character.getNumericValue(input.charAt(0)))][(Character.getNumericValue(input.charAt(1)))] == 'O')) {
+                JOptionPane.showMessageDialog(null, "The space is already used");
                 valid = false;
             }
 
