@@ -7,7 +7,7 @@ public class Main {
         String input;
         char player = 'O';
         boolean stopRound = false;
-        String display = "";
+        String display;
 
         while (!stopRound)
         {
@@ -26,16 +26,15 @@ public class Main {
             setValue(input, player);
 
             checkWin();
+            displayField(display);
             }
 
             stopRound = checkWin();
 
-            displayField(display);
-            }
-        JOptionPane.showMessageDialog(null, display + "The winner is " + player);
         }
-
-        public static void displayField(String display)
+        JOptionPane.showMessageDialog(null, "The winner is " + player);
+    }
+    public static void displayField(String display)
         {
             StringBuilder displayBuilder = new StringBuilder(display);
             for (int i = 0; i<3; i++)
@@ -55,14 +54,6 @@ public class Main {
         int x=Character.getNumericValue(input.charAt(0));
         int y=Character.getNumericValue(input.charAt(1));
 
-        while((x > 2 || x < 0) || (y > 2 || y < 0))
-        {
-            input = JOptionPane.showInputDialog(null,"Out of bounds, " +
-                    "enter two numbers within the range 0-2");
-            x=Character.getNumericValue(input.charAt(0));
-            y=Character.getNumericValue(input.charAt(1));
-        }
-
         while(field[x][y] == 'X' || field[x][y] == 'O')
         {
             input = JOptionPane.showInputDialog(null,"The space is already occupied, " +
@@ -70,11 +61,20 @@ public class Main {
             x=Character.getNumericValue(input.charAt(0));
             y=Character.getNumericValue(input.charAt(1));
         }
+
+        while((x > 2 || x < 0) || (y > 2 || y < 0) || input.length()>2)
+        {
+            input = JOptionPane.showInputDialog(null,"Out of bounds, " +
+                    "enter two numbers within the range 0-2");
+            x=Character.getNumericValue(input.charAt(0));
+            y=Character.getNumericValue(input.charAt(1));
+        }
+
         field[x][y] = player;
     }
 
-    public static boolean checkWin() {
-
+    public static boolean checkWin()
+    {
         boolean checkHorizontals;
         boolean checkVerticals;
         boolean checkDiagonals;
