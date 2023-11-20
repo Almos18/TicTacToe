@@ -15,7 +15,7 @@ public class Main {
             display = "";
             input = JOptionPane.showInputDialog(null, "Where would O like to move? " +
                     "(Enter two numbers within the range 0-2)");
-            setValue(input, player);
+            validateInput(input, player);
             displayField(display);
             display = "";
             if(!checkWin())
@@ -23,7 +23,7 @@ public class Main {
                 player = 'X';
             input = JOptionPane.showInputDialog(null, "Where would X like to move? " +
                     "(Enter two numbers within the range 0-2)");
-            setValue(input, player);
+            validateInput(input, player);
 
             checkWin();
             displayField(display);
@@ -49,27 +49,37 @@ public class Main {
             JOptionPane.showMessageDialog(null, display);
         }
 
-    public static void setValue(String input, char player)
+    public static void validateInput(String input, char player)
     {
-        int x=Character.getNumericValue(input.charAt(0));
-        int y=Character.getNumericValue(input.charAt(1));
+        boolean valid = false;
+        int x;
+        int y;
 
-        while(field[x][y] == 'X' || field[x][y] == 'O')
+        while(!valid)
         {
-            input = JOptionPane.showInputDialog(null,"The space is already occupied, " +
-                    "please enter another");
-            x=Character.getNumericValue(input.charAt(0));
-            y=Character.getNumericValue(input.charAt(1));
-        }
+            valid = true;
 
-        while((x > 2 || x < 0) || (y > 2 || y < 0) || input.length()>2)
-        {
-            input = JOptionPane.showInputDialog(null,"Out of bounds, " +
-                    "enter two numbers within the range 0-2");
-            x=Character.getNumericValue(input.charAt(0));
-            y=Character.getNumericValue(input.charAt(1));
-        }
 
+
+            if (input.length()>2) {
+                JOptionPane.showMessageDialog(null, "The input is too long");
+                valid = false;
+            }
+
+            if ((Character.getNumericValue(input.charAt(0)) > 2) || Character.getNumericValue(input.charAt(1)) > 2) {
+                JOptionPane.showMessageDialog(null, "Out of bounds, " +
+                        "enter two numbers within the range 0-2");
+                valid = false;
+            }
+
+            if(!valid)
+            {
+                input = JOptionPane.showInputDialog(null, "Please enter where you would like to go");
+            }
+
+        }
+        x=Character.getNumericValue(input.charAt(0));
+        y=Character.getNumericValue(input.charAt(1));
         field[x][y] = player;
     }
 
