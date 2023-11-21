@@ -21,7 +21,7 @@ public class Main {
             if(!checkWin())
             {
                 player = 'X';
-            input = JOptionPane.showInputDialog(null, "Where would X like to move? " +
+                input = JOptionPane.showInputDialog(null, "Where would X like to move? " +
                     "(Enter two numbers within the range 0-2)");
             validateInput(input, player);
 
@@ -37,7 +37,7 @@ public class Main {
     public static void displayField(String display)
         {
             StringBuilder displayBuilder = new StringBuilder(display);
-            for (int i = 0; i<3; i++)
+            for (int i=0; i<3; i++)
             {
                 for (int j=0; j<3; j++)
                 {
@@ -116,7 +116,6 @@ public class Main {
                 ((field[2][0] == 'O') && (field[1][1] == 'O') && (field[0][2] == 'O'))));
 
        return checkVerticals || checkHorizontals || checkDiagonals;
-
 
     }
 }
