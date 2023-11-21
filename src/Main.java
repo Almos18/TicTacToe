@@ -1,9 +1,50 @@
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Main {
+
     static char[][] field = new char[3][3];
+    JTextField usernameField;
+    JPasswordField passwordField;
+
+    public Main()
+    {
+        JFrame jFrameWindow = new JFrame("TicTacToe");
+        FlowLayout flowLayout = new FlowLayout();
+        jFrameWindow.setLayout(flowLayout);
+        jFrameWindow.setSize(400,400);
+        jFrameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JLabel usernameLabel = new JLabel("Username:");
+
+        jFrameWindow.add(usernameLabel);
+
+        usernameField = new JTextField(10);
+
+        jFrameWindow.add(usernameField);
+
+        JLabel passwordLabel = new JLabel("Password:");
+
+        jFrameWindow.add(passwordLabel);
+
+        passwordField = new JPasswordField(10);
+
+        jFrameWindow.add(passwordField);
+
+        TextFieldEventHandler handler = new TextFieldEventHandler();
+
+        /*must register an ActionListener for each field here*/
+        usernameField.addActionListener(handler);
+        passwordField.addActionListener(handler);
+
+        jFrameWindow.setVisible(true);
+    }
+
+
     public static void main(String[] args)
     {
+        Main guiApp = new Main();
         String input;
         char player = 'O';
         boolean stopRound = false;
@@ -48,6 +89,38 @@ public class Main {
             display = displayBuilder.toString();
             JOptionPane.showMessageDialog(null, display);
         }
+
+    private class TextFieldEventHandler implements ActionListener
+    {
+        public void actionPerformed(ActionEvent e)
+        {
+            //if the text-field triggered the event
+            if(e.getSource() == usernameField)
+            {
+                //set the focus to the password field
+                passwordField.requestFocus();
+            }
+            //if the password field triggered the event (this could be an if-else)
+            if(e.getSource() == passwordField)
+            {
+                //interestingly, getPassword() returns a char[] rather than a String
+                char[] passwordCharacters = passwordField.getPassword();
+
+                //converting the char[] to a String
+                String passwordText = new String(passwordCharacters);
+
+                if(usernameField.getText().equals("Joe Bloggs") &&
+                        passwordText.equals("123abc"))
+                    JOptionPane.showMessageDialog(null,"Welcome to the system " +
+                                    usernameField.getText(),"Authenticated",
+                            JOptionPane.INFORMATION_MESSAGE);
+                else
+                    JOptionPane.showMessageDialog(null,"Invalid username/password " +
+                            "combination","Not authenticated",JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        }
+    }
 
     public static void validateInput(String input, char player)
     {
