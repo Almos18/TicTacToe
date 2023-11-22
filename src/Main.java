@@ -1,44 +1,57 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Main {
+public class Main extends JPanel {
 
     static char[][] field = new char[3][3];
-    JTextField usernameField;
-    JPasswordField passwordField;
+    static JButton topLeft;
+    static JButton topMiddle;
+    JButton topRight = new JButton("[]");
+    JButton middleLeft = new JButton("[]");
+    JButton middle = new JButton("[]");
+    JButton middleRight = new JButton("[]");
+    JButton bottomLeft = new JButton("[]");
+    JButton bottomMiddle = new JButton("[]");
+    JButton bottomRight = new JButton("[]");
 
     public Main()
     {
-        JFrame jFrameWindow = new JFrame("TicTacToe");
+        ActionListener listener = new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Button selected: " + e.getActionCommand());
+            }
+        };
+
+        setLayout(new GridLayout(3, 3));
+        ButtonGroup btnGroup = new ButtonGroup();
+        for (int i = 0; i < 3 * 3; i++) {
+            String text = String.format("[%d, %d]", i % 3, i / 3);
+            JToggleButton btn = new JToggleButton(text);
+            btn.addActionListener(listener);
+            btnGroup.add(btn);
+            add(btn);
+        }
+
+        /*JFrame jFrameWindow = new JFrame("TicTacToe");
         FlowLayout flowLayout = new FlowLayout();
         jFrameWindow.setLayout(flowLayout);
         jFrameWindow.setSize(400,400);
         jFrameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JLabel usernameLabel = new JLabel("Username:");
+        topLeft = new JButton(Character.toString(field[0][0]));
+        jFrameWindow.add(topLeft);
+        topMiddle = new JButton(Character.toString(field[1][0]));
+        jFrameWindow.add(topMiddle);*/
+        //jFrameWindow.setVisible(true);
 
-        jFrameWindow.add(usernameLabel);
 
-        usernameField = new JTextField(10);
 
-        jFrameWindow.add(usernameField);
 
-        JLabel passwordLabel = new JLabel("Password:");
 
-        jFrameWindow.add(passwordLabel);
 
-        passwordField = new JPasswordField(10);
 
-        jFrameWindow.add(passwordField);
-
-        TextFieldEventHandler handler = new TextFieldEventHandler();
-
-        /*must register an ActionListener for each field here*/
-        usernameField.addActionListener(handler);
-        passwordField.addActionListener(handler);
-
-        jFrameWindow.setVisible(true);
     }
 
 
@@ -54,10 +67,11 @@ public class Main {
         {
             player = 'O';
             display = "";
-            input = JOptionPane.showInputDialog(null, "Where would O like to move? " +
-                    "(Enter two numbers within the range 0-2)");
-            validateInput(input, player);
-            displayField(display);
+            inputField(player);
+           /* input = JOptionPane.showInputDialog(null, "Where would O like to move? " +
+                    "(Enter two numbers within the range 0-2)");*/
+            //validateInput(input, player);
+            //displayField(display);
             display = "";
             if(!checkWin())
             {
@@ -75,6 +89,46 @@ public class Main {
         }
         JOptionPane.showMessageDialog(null, "The winner is " + player);
     }
+
+
+    public static void inputField(char player)
+    {
+
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                createAndShowGui();
+            }
+        });
+        /*topLeft.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                field[0][0] = 'O';
+            }
+        });*/
+
+        /*if(e.getSource() == topLeft)
+        {
+            topLeft.requestFocus();
+        }
+        if(e.getSource() == topMiddle)
+        {
+            topMiddle.requestFocus();
+        }*/
+    }
+    private static void createAndShowGui() {
+        Main mainPanel = new Main();
+
+        JFrame frame = new JFrame("ToggleArray");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add(mainPanel);
+        frame.pack();
+        frame.setLocationByPlatform(true);
+        frame.setVisible(true);
+    }
+
+
     public static void displayField(String display)
         {
             StringBuilder displayBuilder = new StringBuilder(display);
@@ -90,37 +144,7 @@ public class Main {
             JOptionPane.showMessageDialog(null, display);
         }
 
-    private class TextFieldEventHandler implements ActionListener
-    {
-        public void actionPerformed(ActionEvent e)
-        {
-            //if the text-field triggered the event
-            if(e.getSource() == usernameField)
-            {
-                //set the focus to the password field
-                passwordField.requestFocus();
-            }
-            //if the password field triggered the event (this could be an if-else)
-            if(e.getSource() == passwordField)
-            {
-                //interestingly, getPassword() returns a char[] rather than a String
-                char[] passwordCharacters = passwordField.getPassword();
 
-                //converting the char[] to a String
-                String passwordText = new String(passwordCharacters);
-
-                if(usernameField.getText().equals("Joe Bloggs") &&
-                        passwordText.equals("123abc"))
-                    JOptionPane.showMessageDialog(null,"Welcome to the system " +
-                                    usernameField.getText(),"Authenticated",
-                            JOptionPane.INFORMATION_MESSAGE);
-                else
-                    JOptionPane.showMessageDialog(null,"Invalid username/password " +
-                            "combination","Not authenticated",JOptionPane.INFORMATION_MESSAGE);
-            }
-
-        }
-    }
 
     public static void validateInput(String input, char player)
     {
@@ -163,6 +187,7 @@ public class Main {
         y=Character.getNumericValue(input.charAt(1));
         field[x][y] = player;
     }
+
 
     public static boolean checkWin()
     {
