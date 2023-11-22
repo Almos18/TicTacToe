@@ -7,47 +7,27 @@ import java.awt.event.ActionListener;
 public class Main extends JPanel {
 
     static char[][] field = new char[3][3];
-    static JButton topLeft;
-    static JButton topMiddle;
-    JButton topRight = new JButton("[]");
-    JButton middleLeft = new JButton("[]");
-    JButton middle = new JButton("[]");
-    JButton middleRight = new JButton("[]");
-    JButton bottomLeft = new JButton("[]");
-    JButton bottomMiddle = new JButton("[]");
-    JButton bottomRight = new JButton("[]");
 
     public Main()
     {
-        ActionListener listener = new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        ActionListener listener = new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
                 System.out.println("Button selected: " + e.getActionCommand());
             }
         };
 
         setLayout(new GridLayout(3, 3));
         ButtonGroup btnGroup = new ButtonGroup();
-        for (int i = 0; i < 3 * 3; i++) {
-            String text = String.format("[%d, %d]", i % 3, i / 3);
-            JToggleButton btn = new JToggleButton(text);
+        for (int i = 0; i < 3 * 3; i++)
+        {
+
+            JToggleButton btn = new JToggleButton(Character.toString(field[i % 3][i / 3]));
             btn.addActionListener(listener);
             btnGroup.add(btn);
             add(btn);
         }
-
-        /*JFrame jFrameWindow = new JFrame("TicTacToe");
-        FlowLayout flowLayout = new FlowLayout();
-        jFrameWindow.setLayout(flowLayout);
-        jFrameWindow.setSize(400,400);
-        jFrameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        topLeft = new JButton(Character.toString(field[0][0]));
-        jFrameWindow.add(topLeft);
-        topMiddle = new JButton(Character.toString(field[1][0]));
-        jFrameWindow.add(topMiddle);*/
-        //jFrameWindow.setVisible(true);
-
-
-
 
 
 
@@ -99,23 +79,7 @@ public class Main extends JPanel {
                 createAndShowGui();
             }
         });
-        /*topLeft.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                field[0][0] = 'O';
-            }
-        });*/
 
-        /*if(e.getSource() == topLeft)
-        {
-            topLeft.requestFocus();
-        }
-        if(e.getSource() == topMiddle)
-        {
-            topMiddle.requestFocus();
-        }*/
     }
     private static void createAndShowGui() {
         Main mainPanel = new Main();
