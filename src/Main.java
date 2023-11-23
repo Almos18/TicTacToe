@@ -10,6 +10,7 @@ public class Main extends JPanel {
 
     public Main()
     {
+
         ActionListener listener = new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
@@ -22,18 +23,12 @@ public class Main extends JPanel {
         ButtonGroup btnGroup = new ButtonGroup();
         for (int i = 0; i < 3 * 3; i++)
         {
-
             JToggleButton btn = new JToggleButton(Character.toString(field[i % 3][i / 3]));
             btn.addActionListener(listener);
             btnGroup.add(btn);
             add(btn);
         }
-
-
-
-
     }
-
 
     public static void main(String[] args)
     {
@@ -46,24 +41,19 @@ public class Main extends JPanel {
         while (!stopRound)
         {
             player = 'O';
-            display = "";
-            inputField(player);
-           /* input = JOptionPane.showInputDialog(null, "Where would O like to move? " +
-                    "(Enter two numbers within the range 0-2)");*/
+            displayField();
+           // JOptionPane.showMessageDialog(null, "Where would O like to move? " +
+         //           "(Enter two numbers within the range 0-2)");
             //validateInput(input, player);
-            //displayField(display);
-            display = "";
             if(!checkWin())
             {
                 player = 'X';
-                input = JOptionPane.showInputDialog(null, "Where would X like to move? " +
-                    "(Enter two numbers within the range 0-2)");
-            validateInput(input, player);
-
+        //        JOptionPane.showMessageDialog(null, "Where would X like to move? " +
+         //           "(Enter two numbers within the range 0-2)");
+            //validateInput(input, player);
             checkWin();
-            displayField(display);
-            }
 
+            }
             stopRound = checkWin();
 
         }
@@ -71,26 +61,21 @@ public class Main extends JPanel {
     }
 
 
-    public static void inputField(char player)
+    public static void displayField()
     {
-
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                createAndShowGui();
+                JFrame frame = new JFrame("ToggleArray");
+                Main mainPanel = new Main();
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.getContentPane().add(mainPanel);
+                frame.pack();
+                frame.setLocationByPlatform(true);
+                frame.setVisible(true);
             }
         });
-
     }
-    private static void createAndShowGui() {
-        Main mainPanel = new Main();
 
-        JFrame frame = new JFrame("ToggleArray");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add(mainPanel);
-        frame.pack();
-        frame.setLocationByPlatform(true);
-        frame.setVisible(true);
-    }
 
 
     public static void displayField(String display)
@@ -136,7 +121,8 @@ public class Main extends JPanel {
                 valid = false;
             }
 
-            if (valid && (field[(Character.getNumericValue(input.charAt(0)))][(Character.getNumericValue(input.charAt(1)))] == 'X' || field[(Character.getNumericValue(input.charAt(0)))][(Character.getNumericValue(input.charAt(1)))] == 'O')) {
+            if (valid && (field[(Character.getNumericValue(input.charAt(0)))][(Character.getNumericValue(input.charAt(1)))] == 'X' ||
+                    field[(Character.getNumericValue(input.charAt(0)))][(Character.getNumericValue(input.charAt(1)))] == 'O')) {
                 JOptionPane.showMessageDialog(null, "The space is already used");
                 valid = false;
             }
