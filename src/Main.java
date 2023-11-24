@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 public class Main extends JPanel {
 
     static char[][] field = new char[3][3];
+    static ButtonGroup btnGroup = new ButtonGroup();
+    static String selected;
 
     public Main()
     {
@@ -15,33 +17,49 @@ public class Main extends JPanel {
         {
             public void actionPerformed(ActionEvent e)
             {
+                selected = e.getActionCommand();
                 System.out.println("Button selected: " + e.getActionCommand());
+
             }
         };
 
+
+
         setLayout(new GridLayout(3, 3));
-        ButtonGroup btnGroup = new ButtonGroup();
-        for (int i = 0; i < 3 * 3; i++)
+
+        
+
+       /* for (int i = 0; i < 3 * 3; i++)
         {
-            JToggleButton btn = new JToggleButton(Character.toString(field[i % 3][i / 3]));
+
+                if(field[i % 3][i / 3] == 'X'||field[i % 3][i / 3] == 'O')
+                {
+                    String text = String.format(field[][]);
+                }
+                else {
+                    String text = String.format("[%d, %d]", i % 3, i / 3);
+                }
+            JToggleButton btn = new JToggleButton(text);
             btn.addActionListener(listener);
             btnGroup.add(btn);
-            add(btn);
+            add(btn);*/
+            
         }
+
     }
 
     public static void main(String[] args)
     {
-        Main guiApp = new Main();
-        String input;
         char player = 'O';
         boolean stopRound = false;
-        String display;
+        displayField();
 
         while (!stopRound)
         {
             player = 'O';
             displayField();
+            validateInput(player);
+            //setInput(player);
            // JOptionPane.showMessageDialog(null, "Where would O like to move? " +
          //           "(Enter two numbers within the range 0-2)");
             //validateInput(input, player);
@@ -72,13 +90,22 @@ public class Main extends JPanel {
                 frame.pack();
                 frame.setLocationByPlatform(true);
                 frame.setVisible(true);
+                //frame.getContentPane().remove(mainPanel);
             }
         });
     }
 
+    public static void setInput(char player)
+    {
+
+            btnGroup.getElements();
 
 
-    public static void displayField(String display)
+    }
+
+
+
+ /*   public static void displayField(String display)
         {
             StringBuilder displayBuilder = new StringBuilder(display);
             for (int i=0; i<3; i++)
@@ -92,14 +119,16 @@ public class Main extends JPanel {
             display = displayBuilder.toString();
             JOptionPane.showMessageDialog(null, display);
         }
+*/
 
 
-
-    public static void validateInput(String input, char player)
+    public static void validateInput(char player)
     {
+        //JOptionPane.showMessageDialog(null, selected);
         boolean valid = false;
         int x;
         int y;
+        String input = selected;
 
         while(!valid)
         {
