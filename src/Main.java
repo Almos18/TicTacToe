@@ -4,15 +4,23 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Main extends JPanel {
+public class Main extends JPanel implements ActionListener{
 
     static char[][] field = new char[3][3];
     static ButtonGroup btnGroup = new ButtonGroup();
     static String selected;
+    static JButton btn00 = new JButton();
+    static JButton btn01 = new JButton();
+    static JButton btn02 = new JButton();
+    static JButton btn10 = new JButton();
+    static JButton btn11 = new JButton();
+    static JButton btn12 = new JButton();
+    static JButton btn20 = new JButton();
+    static JButton btn21 = new JButton();
+    static JButton btn22 = new JButton("[]");
 
     public Main()
     {
-
         ActionListener listener = new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
@@ -24,27 +32,33 @@ public class Main extends JPanel {
         };
 
 
-
         setLayout(new GridLayout(3, 3));
 
-        
+        btn00.addActionListener(listener);
+        btn01.addActionListener(listener);
+        btn02.addActionListener(listener);
+        btn10.addActionListener(listener);
+        btn11.addActionListener(listener);
+        btn12.addActionListener(listener);
+        btn20.addActionListener(listener);
+        btn21.addActionListener(listener);
+        btn22.addActionListener(listener);
 
-       /* for (int i = 0; i < 3 * 3; i++)
+        add(btn00);
+        add(btn01);
+        add(btn02);
+        add(btn10);
+        add(btn11);
+        add(btn12);
+        add(btn20);
+        add(btn21);
+        add(btn22);
+
+        if(btn00.getModel().isPressed())
         {
-
-                if(field[i % 3][i / 3] == 'X'||field[i % 3][i / 3] == 'O')
-                {
-                    String text = String.format(field[][]);
-                }
-                else {
-                    String text = String.format("[%d, %d]", i % 3, i / 3);
-                }
-            JToggleButton btn = new JToggleButton(text);
-            btn.addActionListener(listener);
-            btnGroup.add(btn);
-            add(btn);*/
-            
+            btn00.setText("O");
         }
+
 
     }
 
@@ -53,12 +67,23 @@ public class Main extends JPanel {
         char player = 'O';
         boolean stopRound = false;
         displayField();
+        boolean inBattle = true;
 
         while (!stopRound)
         {
             player = 'O';
             displayField();
+
+            while(!inBattle){
+                try {
+                    Thread.sleep(200);
+                } catch(InterruptedException e) {
+                    inBattle=true;
+                }
+            }
+
             validateInput(player);
+
             //setInput(player);
            // JOptionPane.showMessageDialog(null, "Where would O like to move? " +
          //           "(Enter two numbers within the range 0-2)");
@@ -82,7 +107,8 @@ public class Main extends JPanel {
     public static void displayField()
     {
         SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
+            public void run()
+            {
                 JFrame frame = new JFrame("ToggleArray");
                 Main mainPanel = new Main();
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -93,6 +119,8 @@ public class Main extends JPanel {
                 //frame.getContentPane().remove(mainPanel);
             }
         });
+
+
     }
 
     public static void setInput(char player)
@@ -161,6 +189,7 @@ public class Main extends JPanel {
                 input = JOptionPane.showInputDialog(null, "Please enter where you would like to go");
             }
 
+
         }
         x=Character.getNumericValue(input.charAt(0));
         y=Character.getNumericValue(input.charAt(1));
@@ -193,6 +222,16 @@ public class Main extends JPanel {
                 ((field[2][0] == 'O') && (field[1][1] == 'O') && (field[0][2] == 'O'))));
 
        return checkVerticals || checkHorizontals || checkDiagonals;
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e)
+    {
+
+        selected = e.getActionCommand();
+        System.out.println("Button selected: " + e.getActionCommand());
+
 
     }
 }
