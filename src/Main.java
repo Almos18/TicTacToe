@@ -1,86 +1,80 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Main extends JPanel implements ActionListener{
+public class Main{
 
     static char[][] field = new char[3][3];
-    static ButtonGroup btnGroup = new ButtonGroup();
-    static String selected;
-    static JButton btn00 = new JButton();
-    static JButton btn01 = new JButton();
-    static JButton btn02 = new JButton();
-    static JButton btn10 = new JButton();
-    static JButton btn11 = new JButton();
-    static JButton btn12 = new JButton();
-    static JButton btn20 = new JButton();
-    static JButton btn21 = new JButton();
-    static JButton btn22 = new JButton("[]");
+    JButton btn00, btn01, btn02, btn10, btn11, btn12, btn20, btn21, btn22;
+    JFrame jFrameWindow;
 
     public Main()
     {
-        ActionListener listener = new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
-                selected = e.getActionCommand();
-                System.out.println("Button selected: " + e.getActionCommand());
+        jFrameWindow = new JFrame("TicTacToe");
 
-            }
-        };
+        GridLayout flowLayout = new GridLayout(3,3);
 
+        jFrameWindow.setLayout(flowLayout);
 
-        setLayout(new GridLayout(3, 3));
+        jFrameWindow.setSize(400,400);
 
-        btn00.addActionListener(listener);
-        btn01.addActionListener(listener);
-        btn02.addActionListener(listener);
-        btn10.addActionListener(listener);
-        btn11.addActionListener(listener);
-        btn12.addActionListener(listener);
-        btn20.addActionListener(listener);
-        btn21.addActionListener(listener);
-        btn22.addActionListener(listener);
+        jFrameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        add(btn00);
-        add(btn01);
-        add(btn02);
-        add(btn10);
-        add(btn11);
-        add(btn12);
-        add(btn20);
-        add(btn21);
-        add(btn22);
+        Main.SelectMove selectMove = new Main.SelectMove();
 
-        if(btn00.getModel().isPressed())
-        {
-            btn00.setText("O");
-        }
+        btn00 = new JButton();
+        jFrameWindow.add(btn00);
+        btn00.addActionListener(selectMove);
 
+        btn01 = new JButton();
+        jFrameWindow.add(btn01);
+        btn01.addActionListener(selectMove);
+
+        btn02 = new JButton();
+        jFrameWindow.add(btn02);
+        btn02.addActionListener(selectMove);
+
+        btn10 = new JButton();
+        jFrameWindow.add(btn10);
+        btn10.addActionListener(selectMove);
+
+        btn11 = new JButton();
+        jFrameWindow.add(btn11);
+        btn11.addActionListener(selectMove);
+
+        btn12 = new JButton();
+        jFrameWindow.add(btn12);
+        btn12.addActionListener(selectMove);
+
+        btn20 = new JButton();
+        jFrameWindow.add(btn20);
+        btn20.addActionListener(selectMove);
+
+        btn21 = new JButton();
+        jFrameWindow.add(btn21);
+        btn21.addActionListener(selectMove);
+
+        btn22 = new JButton();
+        jFrameWindow.add(btn22);
+        btn22.addActionListener(selectMove);
+
+        jFrameWindow.setVisible(true);
 
     }
 
     public static void main(String[] args)
     {
-        char player = 'O';
-        boolean stopRound = false;
-        displayField();
-        boolean inBattle = true;
 
-        while (!stopRound)
+        Main guiApp = new Main();
+        char player = 'O';
+
+       /* while (!stopRound)
         {
             player = 'O';
             displayField();
 
-            while(!inBattle){
-                try {
-                    Thread.sleep(200);
-                } catch(InterruptedException e) {
-                    inBattle=true;
-                }
-            }
+
 
             validateInput(player);
 
@@ -100,36 +94,75 @@ public class Main extends JPanel implements ActionListener{
             stopRound = checkWin();
 
         }
-        JOptionPane.showMessageDialog(null, "The winner is " + player);
+        JOptionPane.showMessageDialog(null, "The winner is " + player); */
     }
 
-
-    public static void displayField()
+    private class SelectMove() implements ActionListener
     {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run()
+        public void actionPerformed(ActionEvent e)
+        {
+
+            char player = 'O';
+            String playerAsString = String.valueOf(player);
+            boolean stopRound = false;
+
+            if(e.getSource()==btn00)
             {
-                JFrame frame = new JFrame("ToggleArray");
-                Main mainPanel = new Main();
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add(mainPanel);
-                frame.pack();
-                frame.setLocationByPlatform(true);
-                frame.setVisible(true);
-                //frame.getContentPane().remove(mainPanel);
+                btn00.setText(playerAsString);
+                field[0][0] = player;
+
             }
-        });
 
+            else if(e.getSource()==btn01)
+            {
+                btn01.setText(playerAsString);
+                field[0][1] = player;
+            }
 
+            else if(e.getSource()==btn02)
+            {
+                btn02.setText(playerAsString);
+                field[0][2] = player;
+            }
+
+            else if(e.getSource()==btn10)
+            {
+                btn10.setText(playerAsString);
+                field[1][0] = player;
+            }
+
+            else if(e.getSource()==btn11)
+            {
+                btn11.setText(playerAsString);
+                field[1][1] = player;
+            }
+
+            else if(e.getSource()==btn12)
+            {
+                btn12.setText(playerAsString);
+                field[1][2] = player;
+            }
+
+            else if(e.getSource()==btn20)
+            {
+                btn20.setText(playerAsString);
+                field[2][0] = player;
+            }
+
+            else if(e.getSource()==btn21)
+            {
+                btn21.setText(playerAsString);
+                field[2][1] = player;
+            }
+
+            else if(e.getSource()==btn22)
+            {
+                btn22.setText(playerAsString);
+                field[2][2] = player;
+            }
+        }
     }
 
-    public static void setInput(char player)
-    {
-
-            btnGroup.getElements();
-
-
-    }
 
 
 
@@ -150,13 +183,12 @@ public class Main extends JPanel implements ActionListener{
 */
 
 
-    public static void validateInput(char player)
+   /* public static void validateInput(char player)
     {
         //JOptionPane.showMessageDialog(null, selected);
         boolean valid = false;
         int x;
         int y;
-        String input = selected;
 
         while(!valid)
         {
@@ -194,7 +226,7 @@ public class Main extends JPanel implements ActionListener{
         x=Character.getNumericValue(input.charAt(0));
         y=Character.getNumericValue(input.charAt(1));
         field[x][y] = player;
-    }
+    }*/
 
 
     public static boolean checkWin()
@@ -225,13 +257,4 @@ public class Main extends JPanel implements ActionListener{
 
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e)
-    {
-
-        selected = e.getActionCommand();
-        System.out.println("Button selected: " + e.getActionCommand());
-
-
-    }
 }
