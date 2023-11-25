@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 public class Main{
 
     static char[][] field = new char[3][3];
+
+    static char player = 'O';
     JButton btn00, btn01, btn02, btn10, btn11, btn12, btn20, btn21, btn22;
     JFrame jFrameWindow;
 
@@ -18,6 +20,8 @@ public class Main{
         jFrameWindow.setLayout(flowLayout);
 
         jFrameWindow.setSize(400,400);
+
+        jFrameWindow.setLocationRelativeTo(null);
 
         jFrameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -65,44 +69,14 @@ public class Main{
 
     public static void main(String[] args)
     {
-
         Main guiApp = new Main();
         char player = 'O';
-
-       /* while (!stopRound)
-        {
-            player = 'O';
-            displayField();
-
-
-
-            validateInput(player);
-
-            //setInput(player);
-           // JOptionPane.showMessageDialog(null, "Where would O like to move? " +
-         //           "(Enter two numbers within the range 0-2)");
-            //validateInput(input, player);
-            if(!checkWin())
-            {
-                player = 'X';
-        //        JOptionPane.showMessageDialog(null, "Where would X like to move? " +
-         //           "(Enter two numbers within the range 0-2)");
-            //validateInput(input, player);
-            checkWin();
-
-            }
-            stopRound = checkWin();
-
-        }
-        JOptionPane.showMessageDialog(null, "The winner is " + player); */
     }
 
-    private class SelectMove() implements ActionListener
+    private class SelectMove implements ActionListener
     {
         public void actionPerformed(ActionEvent e)
         {
-
-            char player = 'O';
             String playerAsString = String.valueOf(player);
             boolean stopRound = false;
 
@@ -110,126 +84,87 @@ public class Main{
             {
                 btn00.setText(playerAsString);
                 field[0][0] = player;
-
+                btn00.setEnabled(false);
+                CheckWin(player);
+                player = SwapPlayer(player);
             }
 
             else if(e.getSource()==btn01)
             {
                 btn01.setText(playerAsString);
                 field[0][1] = player;
+                btn01.setEnabled(false);
+                CheckWin(player);
+                player = SwapPlayer(player);
             }
 
             else if(e.getSource()==btn02)
             {
                 btn02.setText(playerAsString);
                 field[0][2] = player;
+                btn02.setEnabled(false);
+                CheckWin(player);
+                player = SwapPlayer(player);
             }
 
             else if(e.getSource()==btn10)
             {
                 btn10.setText(playerAsString);
                 field[1][0] = player;
+                btn10.setEnabled(false);
+                CheckWin(player);
+                player = SwapPlayer(player);
+
             }
 
             else if(e.getSource()==btn11)
             {
                 btn11.setText(playerAsString);
                 field[1][1] = player;
+                btn11.setEnabled(false);
+                CheckWin(player);
+                player = SwapPlayer(player);
             }
 
             else if(e.getSource()==btn12)
             {
                 btn12.setText(playerAsString);
                 field[1][2] = player;
+                btn12.setEnabled(false);
+                CheckWin(player);
+                player = SwapPlayer(player);
             }
 
             else if(e.getSource()==btn20)
             {
                 btn20.setText(playerAsString);
                 field[2][0] = player;
+                btn20.setEnabled(false);
+                CheckWin(player);
+                player = SwapPlayer(player);
             }
 
             else if(e.getSource()==btn21)
             {
                 btn21.setText(playerAsString);
                 field[2][1] = player;
+                btn21.setEnabled(false);
+                CheckWin(player);
+                player = SwapPlayer(player);
             }
 
             else if(e.getSource()==btn22)
             {
                 btn22.setText(playerAsString);
                 field[2][2] = player;
+                btn22.setEnabled(false);
+                CheckWin(player);
+                player = SwapPlayer(player);
             }
         }
     }
 
-
-
-
- /*   public static void displayField(String display)
-        {
-            StringBuilder displayBuilder = new StringBuilder(display);
-            for (int i=0; i<3; i++)
-            {
-                for (int j=0; j<3; j++)
-                {
-                    displayBuilder.append(field[j][i]).append(" ");
-                }
-                displayBuilder.append("\n");
-            }
-            display = displayBuilder.toString();
-            JOptionPane.showMessageDialog(null, display);
-        }
-*/
-
-
-   /* public static void validateInput(char player)
-    {
-        //JOptionPane.showMessageDialog(null, selected);
-        boolean valid = false;
-        int x;
-        int y;
-
-        while(!valid)
-        {
-            valid = true;
-
-            if (input.length()!=2) {
-                JOptionPane.showMessageDialog(null, "The input is too long or too short");
-                valid = false;
-            }
-
-            if (valid && (!Character.isDigit(input.charAt(0)) || !Character.isDigit(input.charAt(1)))) {
-                JOptionPane.showMessageDialog(null, "The input is not a number");
-                valid = false;
-            }
-
-            if (valid && ((Character.getNumericValue(input.charAt(0)) > 2) || Character.getNumericValue(input.charAt(1)) > 2)) {
-                JOptionPane.showMessageDialog(null, "Out of bounds, " +
-                        "enter two numbers within the range 0-2");
-                valid = false;
-            }
-
-            if (valid && (field[(Character.getNumericValue(input.charAt(0)))][(Character.getNumericValue(input.charAt(1)))] == 'X' ||
-                    field[(Character.getNumericValue(input.charAt(0)))][(Character.getNumericValue(input.charAt(1)))] == 'O')) {
-                JOptionPane.showMessageDialog(null, "The space is already used");
-                valid = false;
-            }
-
-            if(!valid)
-            {
-                input = JOptionPane.showInputDialog(null, "Please enter where you would like to go");
-            }
-
-
-        }
-        x=Character.getNumericValue(input.charAt(0));
-        y=Character.getNumericValue(input.charAt(1));
-        field[x][y] = player;
-    }*/
-
-
-    public static boolean checkWin()
+    public static void CheckWin(char player)
     {
         boolean checkHorizontals;
         boolean checkVerticals;
@@ -253,8 +188,20 @@ public class Main{
                 (field[2][0] == 'X') && (field[1][1] == 'X') && (field[0][2] == 'X') ||
                 ((field[2][0] == 'O') && (field[1][1] == 'O') && (field[0][2] == 'O'))));
 
-       return checkVerticals || checkHorizontals || checkDiagonals;
+       if(checkVerticals || checkHorizontals || checkDiagonals)
+       {
+           JOptionPane.showMessageDialog(null, "The winner is " + player);
+           System.exit(0);
+       }
 
     }
+    public static char SwapPlayer(char player)
+    {
+        if(player=='O')
+            player = 'X';
+        else
+            player = 'O';
 
+        return player;
+    }
 }
