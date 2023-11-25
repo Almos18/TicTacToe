@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 public class Main
 {
+
     static char[][] field = new char[3][3];
     static char player = 'O';
     JButton btn00, btn01, btn02, btn10, btn11, btn12, btn20, btn21, btn22;
