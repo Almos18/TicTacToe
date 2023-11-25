@@ -3,10 +3,9 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Main{
-
+public class Main
+{
     static char[][] field = new char[3][3];
-
     static char player = 'O';
     JButton btn00, btn01, btn02, btn10, btn11, btn12, btn20, btn21, btn22;
     JFrame jFrameWindow;
@@ -64,13 +63,11 @@ public class Main{
         btn22.addActionListener(selectMove);
 
         jFrameWindow.setVisible(true);
-
     }
 
     public static void main(String[] args)
     {
         Main guiApp = new Main();
-        char player = 'O';
     }
 
     private class SelectMove implements ActionListener
@@ -78,7 +75,6 @@ public class Main{
         public void actionPerformed(ActionEvent e)
         {
             String playerAsString = String.valueOf(player);
-            boolean stopRound = false;
 
             if(e.getSource()==btn00)
             {
@@ -195,6 +191,7 @@ public class Main{
        }
 
     }
+
     public static char SwapPlayer(char player)
     {
         if(player=='O')
