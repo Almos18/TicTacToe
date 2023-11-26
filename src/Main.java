@@ -2,16 +2,16 @@ import javax.swing.*;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 public class Main
 {
 
     static char[][] field = new char[3][3];
     static char player = 'O';
+    static int turn = 0;
     JButton btn00, btn01, btn02, btn10, btn11, btn12, btn20, btn21, btn22;
     JFrame jFrameWindow;
-
-    static int turn = 0;
 
     public Main()
     {
@@ -189,9 +189,17 @@ public class Main
 
        if(checkVerticals || checkHorizontals || checkDiagonals)
        {
-           JOptionPane.showMessageDialog(null, "The winner is " + player);
-           System.exit(0);
+           if(JOptionPane.showConfirmDialog(null, "The winner is " + player +
+                   ". Would you like to play again?", "Win", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+           {
+               resetGame();
+           }
+            else {
+               System.exit(0);
+           }
        }
+
+        turn ++;
 
        if(turn == 8)
        {
@@ -199,7 +207,6 @@ public class Main
            System.exit(0);
        }
 
-       turn ++;
 
     }
 
@@ -211,5 +218,15 @@ public class Main
             player = 'O';
 
         return player;
+    }
+
+    public static void resetGame()
+    {
+        turn = 0;
+        field = new char[3][3];
+        player = 'X';
+        Main guiApp = new Main();
+
+
     }
 }
