@@ -11,6 +11,8 @@ public class Main
     JButton btn00, btn01, btn02, btn10, btn11, btn12, btn20, btn21, btn22;
     JFrame jFrameWindow;
 
+    static int turn = 0;
+
     public Main()
     {
         jFrameWindow = new JFrame("TicTacToe");
@@ -190,6 +192,14 @@ public class Main
            JOptionPane.showMessageDialog(null, "The winner is " + player);
            System.exit(0);
        }
+
+       if(turn == 8)
+       {
+           JOptionPane.showMessageDialog(null, "Draw");
+           System.exit(0);
+       }
+
+       turn ++;
 
     }
 
