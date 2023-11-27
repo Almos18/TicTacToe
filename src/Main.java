@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 
 public class Main
 {
@@ -84,7 +83,7 @@ public class Main
                 btn00.setText(playerAsString);
                 field[0][0] = player;
                 btn00.setEnabled(false);
-                CheckWin(player);
+                CheckWin();
                 player = SwapPlayer(player);
             }
 
@@ -93,7 +92,7 @@ public class Main
                 btn01.setText(playerAsString);
                 field[0][1] = player;
                 btn01.setEnabled(false);
-                CheckWin(player);
+                CheckWin();
                 player = SwapPlayer(player);
             }
 
@@ -102,7 +101,7 @@ public class Main
                 btn02.setText(playerAsString);
                 field[0][2] = player;
                 btn02.setEnabled(false);
-                CheckWin(player);
+                CheckWin();
                 player = SwapPlayer(player);
             }
 
@@ -111,7 +110,7 @@ public class Main
                 btn10.setText(playerAsString);
                 field[1][0] = player;
                 btn10.setEnabled(false);
-                CheckWin(player);
+                CheckWin();
                 player = SwapPlayer(player);
 
             }
@@ -121,7 +120,7 @@ public class Main
                 btn11.setText(playerAsString);
                 field[1][1] = player;
                 btn11.setEnabled(false);
-                CheckWin(player);
+                CheckWin();
                 player = SwapPlayer(player);
             }
 
@@ -130,7 +129,7 @@ public class Main
                 btn12.setText(playerAsString);
                 field[1][2] = player;
                 btn12.setEnabled(false);
-                CheckWin(player);
+                CheckWin();
                 player = SwapPlayer(player);
             }
 
@@ -139,7 +138,7 @@ public class Main
                 btn20.setText(playerAsString);
                 field[2][0] = player;
                 btn20.setEnabled(false);
-                CheckWin(player);
+                CheckWin();
                 player = SwapPlayer(player);
             }
 
@@ -148,7 +147,7 @@ public class Main
                 btn21.setText(playerAsString);
                 field[2][1] = player;
                 btn21.setEnabled(false);
-                CheckWin(player);
+                CheckWin();
                 player = SwapPlayer(player);
             }
 
@@ -157,14 +156,15 @@ public class Main
                 btn22.setText(playerAsString);
                 field[2][2] = player;
                 btn22.setEnabled(false);
-                CheckWin(player);
+                CheckWin();
                 player = SwapPlayer(player);
             }
         }
     }
 
-    public static void CheckWin(char player)
+    public static void CheckWin()
     {
+        turn ++;
         boolean checkHorizontals;
         boolean checkVerticals;
         boolean checkDiagonals;
@@ -187,26 +187,10 @@ public class Main
                 (field[2][0] == 'X') && (field[1][1] == 'X') && (field[0][2] == 'X') ||
                 ((field[2][0] == 'O') && (field[1][1] == 'O') && (field[0][2] == 'O'))));
 
-       if(checkVerticals || checkHorizontals || checkDiagonals)
+       if((checkVerticals || checkHorizontals || checkDiagonals) || turn ==9)
        {
-           if(JOptionPane.showConfirmDialog(null, "The winner is " + player +
-                   ". Would you like to play again?", "Win", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
-           {
-               resetGame();
-           }
-            else {
-               System.exit(0);
-           }
+           FinishGame();
        }
-
-        turn ++;
-
-       if(turn == 8)
-       {
-           JOptionPane.showMessageDialog(null, "Draw");
-           System.exit(0);
-       }
-
 
     }
 
@@ -220,13 +204,25 @@ public class Main
         return player;
     }
 
-    public static void resetGame()
+    public static void FinishGame()
     {
-        turn = 0;
-        field = new char[3][3];
-        player = 'X';
-        Main guiApp = new Main();
+        if(turn!=9)
+        {
+            JOptionPane.showMessageDialog(null, "The winner is " + player + ".", "Win",JOptionPane.INFORMATION_MESSAGE);
+        }
+        else
+            JOptionPane.showMessageDialog(null, "The game is a draw", "Draw", JOptionPane.INFORMATION_MESSAGE);
 
+        if(JOptionPane.showConfirmDialog(null, "Would you like to play again?", "Retry?", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+        {
+            turn = 0;
+            field = new char[3][3];
+            player = SwapPlayer(player);
+            Main guiApp = new Main();
+        }
+        else {
+            System.exit(0);
+        }
 
     }
 }
