@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 public class Main
 {
-
     static char[][] field = new char[3][3];
     static char player = 'O';
     static int turn = 0;
@@ -65,11 +64,13 @@ public class Main
         btn22.addActionListener(selectMove);
 
         jFrameWindow.setVisible(true);
+
     }
 
     public static void main(String[] args)
     {
         Main guiApp = new Main();
+
     }
 
     private class SelectMove implements ActionListener
@@ -112,7 +113,6 @@ public class Main
                 btn10.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
-
             }
 
             else if(e.getSource()==btn11)
@@ -168,24 +168,24 @@ public class Main
         boolean checkHorizontals;
         boolean checkVerticals;
         boolean checkDiagonals;
-        checkVerticals = ((field[0][0] == 'X') && (field[0][1] == 'X') && (field[0][2] == 'X') ||
-                ((field[0][0] == 'O') && (field[0][1] == 'O') && (field[0][2] == 'O') ||
-                (field[1][0] == 'X') && (field[1][1] == 'X') && (field[1][2] == 'X') ||
-                ((field[1][0] == 'O') && (field[1][1] == 'O') && (field[1][2] == 'O') ||
-                ((field[2][0] == 'X') && (field[2][1] == 'X') && (field[2][2] == 'X') ||
-                (field[2][0] == 'O') && (field[2][1] == 'O') && (field[2][2] == 'O')))));
+        checkVerticals = (((field[0][0] == 'X') && (field[0][1] == 'X') && (field[0][2] == 'X')) ||
+                ((field[0][0] == 'O') && (field[0][1] == 'O') && (field[0][2] == 'O')) ||
+                ((field[1][0] == 'X') && (field[1][1] == 'X') && (field[1][2] == 'X')) ||
+                ((field[1][0] == 'O') && (field[1][1] == 'O') && (field[1][2] == 'O')) ||
+                ((field[2][0] == 'X') && (field[2][1] == 'X') && (field[2][2] == 'X')) ||
+                ((field[2][0] == 'O') && (field[2][1] == 'O') && (field[2][2] == 'O')));
 
-        checkHorizontals = ((field[0][0] == 'X') && (field[1][0] == 'X') && (field[2][0] == 'X') ||
-                ((field[0][1] == 'O') && (field[1][1] == 'O') && (field[2][1] == 'O') ||
-                (field[0][2] == 'X') && (field[1][2] == 'X') && (field[2][2] == 'X') ||
-                ((field[0][0] == 'O') && (field[1][0] == 'O') && (field[2][0] == 'O') ||
-                ((field[0][1] == 'X') && (field[1][1] == 'X') && (field[2][1] == 'X') ||
-                (field[0][2] == 'O') && (field[1][2] == 'O') && (field[2][2] == 'O')))));
+        checkHorizontals = (((field[0][0] == 'X') && (field[1][0] == 'X') && (field[2][0] == 'X')) ||
+                ((field[0][1] == 'O') && (field[1][1] == 'O') && (field[2][1] == 'O')) ||
+                ((field[0][2] == 'X') && (field[1][2] == 'X') && (field[2][2] == 'X')) ||
+                ((field[0][0] == 'O') && (field[1][0] == 'O') && (field[2][0] == 'O')) ||
+                ((field[0][1] == 'X') && (field[1][1] == 'X') && (field[2][1] == 'X')) ||
+                ((field[0][2] == 'O') && (field[1][2] == 'O') && (field[2][2] == 'O')));
 
-        checkDiagonals = ((field[0][0] == 'X') && (field[1][1] == 'X') && (field[2][2] == 'X') ||
-                ((field[0][0] == 'O') && (field[1][1] == 'O') && (field[2][2] == 'O') ||
-                (field[2][0] == 'X') && (field[1][1] == 'X') && (field[0][2] == 'X') ||
-                ((field[2][0] == 'O') && (field[1][1] == 'O') && (field[0][2] == 'O'))));
+        checkDiagonals = (((field[0][0] == 'X') && (field[1][1] == 'X') && (field[2][2] == 'X')) ||
+                ((field[0][0] == 'O') && (field[1][1] == 'O') && (field[2][2] == 'O')) ||
+                ((field[2][0] == 'X') && (field[1][1] == 'X') && (field[0][2] == 'X')) ||
+                ((field[2][0] == 'O') && (field[1][1] == 'O') && (field[0][2] == 'O')));
 
        if((checkVerticals || checkHorizontals || checkDiagonals) || turn ==9)
        {
@@ -217,7 +217,7 @@ public class Main
         {
             turn = 0;
             field = new char[3][3];
-            player = SwapPlayer(player);
+            player = 'O';
             Main guiApp = new Main();
         }
         else {
