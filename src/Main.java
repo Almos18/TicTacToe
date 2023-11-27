@@ -10,10 +10,13 @@ public class Main
     static int turn = 0;
     JButton btn00, btn01, btn02, btn10, btn11, btn12, btn20, btn21, btn22;
     JFrame jFrameWindow;
+    static boolean game = true;
 
     public Main()
     {
         jFrameWindow = new JFrame("TicTacToe");
+
+
 
         GridLayout flowLayout = new GridLayout(3,3);
 
@@ -25,7 +28,7 @@ public class Main
 
         jFrameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        Main.SelectMove selectMove = new Main.SelectMove();
+        Main.DisplayField selectMove = new Main.DisplayField();
 
         btn00 = new JButton();
         jFrameWindow.add(btn00);
@@ -65,15 +68,17 @@ public class Main
 
         jFrameWindow.setVisible(true);
 
+
     }
 
     public static void main(String[] args)
     {
         Main guiApp = new Main();
 
+
     }
 
-    private class SelectMove implements ActionListener
+    private class DisplayField implements ActionListener
     {
         public void actionPerformed(ActionEvent e)
         {
@@ -159,6 +164,17 @@ public class Main
                 CheckWin();
                 player = SwapPlayer(player);
             }
+
+            if (!game)
+            {
+                jFrameWindow.dispose();
+                game = true;
+                turn = 0;
+                field = new char[3][3];
+                player = 'O';
+                Main guiApp = new Main();
+
+            }
         }
     }
 
@@ -194,7 +210,7 @@ public class Main
 
     }
 
-    public static char SwapPlayer(char player)
+    private static char SwapPlayer(char player)
     {
         if(player=='O')
             player = 'X';
@@ -204,7 +220,7 @@ public class Main
         return player;
     }
 
-    public static void FinishGame()
+    private static void FinishGame()
     {
         if(turn!=9)
         {
@@ -215,11 +231,9 @@ public class Main
 
         if(JOptionPane.showConfirmDialog(null, "Would you like to play again?", "Retry?", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
         {
-            turn = 0;
-            field = new char[3][3];
-            player = 'O';
-            Main guiApp = new Main();
+            game = false;
         }
+
         else {
             System.exit(0);
         }
