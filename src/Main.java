@@ -8,15 +8,13 @@ public class Main
     static char[][] field = new char[3][3];
     static char player = 'O';
     static int turn = 0;
-    JButton btn00, btn01, btn02, btn10, btn11, btn12, btn20, btn21, btn22;
+    static boolean keepGoing = true;
     JFrame jFrameWindow;
-    static boolean game = true;
+    JButton btn00, btn01, btn02, btn10, btn11, btn12, btn20, btn21, btn22;
 
     public Main()
     {
         jFrameWindow = new JFrame("TicTacToe");
-
-
 
         GridLayout flowLayout = new GridLayout(3,3);
 
@@ -68,13 +66,11 @@ public class Main
 
         jFrameWindow.setVisible(true);
 
-
     }
 
     public static void main(String[] args)
     {
         Main guiApp = new Main();
-
 
     }
 
@@ -165,10 +161,10 @@ public class Main
                 player = SwapPlayer(player);
             }
 
-            if (!game)
+            if (!keepGoing)
             {
                 jFrameWindow.dispose();
-                game = true;
+                keepGoing = true;
                 turn = 0;
                 field = new char[3][3];
                 player = 'O';
@@ -203,7 +199,7 @@ public class Main
                 ((field[2][0] == 'X') && (field[1][1] == 'X') && (field[0][2] == 'X')) ||
                 ((field[2][0] == 'O') && (field[1][1] == 'O') && (field[0][2] == 'O')));
 
-       if((checkVerticals || checkHorizontals || checkDiagonals) || turn ==9)
+       if((checkVerticals || checkHorizontals || checkDiagonals) || turn == 9)
        {
            FinishGame();
        }
@@ -231,7 +227,7 @@ public class Main
 
         if(JOptionPane.showConfirmDialog(null, "Would you like to play again?", "Retry?", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
         {
-            game = false;
+            keepGoing = false;
         }
 
         else {
