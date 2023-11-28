@@ -10,10 +10,14 @@ public class Main
     static int turn = 0;
     static boolean keepGoing = true;
     JFrame jFrameWindow;
-    JButton btn00, btn01, btn02, btn10, btn11, btn12, btn20, btn21, btn22;
+    JButton btn01, btn02, btn10, btn11, btn12, btn20, btn21, btn22;
 
     public Main()
     {
+        //JButton btn00 = new JButton();
+        Variables var = new Variables();
+        //var.setBtn00(btn00);
+
         jFrameWindow = new JFrame("TicTacToe");
 
         GridLayout flowLayout = new GridLayout(3,3);
@@ -28,9 +32,9 @@ public class Main
 
         Main.DisplayField selectMove = new Main.DisplayField();
 
-        btn00 = new JButton();
-        jFrameWindow.add(btn00);
-        btn00.addActionListener(selectMove);
+        //btn00 = new JButton();
+        jFrameWindow.add(var.getBtn00());
+        var.getBtn00().addActionListener(selectMove);
 
         btn01 = new JButton();
         jFrameWindow.add(btn01);
@@ -76,15 +80,16 @@ public class Main
 
     private class DisplayField implements ActionListener
     {
+        Variables var = new Variables();
         public void actionPerformed(ActionEvent e)
         {
             String playerAsString = String.valueOf(player);
 
-            if(e.getSource()==btn00)
+            if(e.getSource()==var.getBtn00())
             {
-                btn00.setText(playerAsString);
+                var.getBtn00().setText(playerAsString);
                 field[0][0] = player;
-                btn00.setEnabled(false);
+                var.getBtn00().setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
             }
