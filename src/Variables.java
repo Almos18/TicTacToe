@@ -45,6 +45,11 @@ public class Variables
         return keepGoing;
     }
 
+    public boolean getKeepGoing()
+    {
+        return keepGoing;
+    }
+
     public void setKeepGoing(boolean keepGoing) {
         this.keepGoing = keepGoing;
     }

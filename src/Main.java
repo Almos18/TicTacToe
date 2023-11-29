@@ -10,7 +10,7 @@ public class Main
     static int turn = 0;
     static boolean keepGoing = true;
     JFrame jFrameWindow;
-    JButton btn01, btn02, btn10, btn11, btn12, btn20, btn21, btn22;
+    JButton btn00, btn01, btn02, btn10, btn11, btn12, btn20, btn21, btn22;
 
     public Main()
     {
@@ -32,9 +32,9 @@ public class Main
 
         Main.DisplayField selectMove = new Main.DisplayField();
 
-        //btn00 = new JButton();
-        jFrameWindow.add(var.getBtn00());
-        var.getBtn00().addActionListener(selectMove);
+        btn00 = new JButton();
+        jFrameWindow.add(btn00);
+        btn00.addActionListener(selectMove);
 
         btn01 = new JButton();
         jFrameWindow.add(btn01);
@@ -85,11 +85,12 @@ public class Main
         {
             String playerAsString = String.valueOf(player);
 
-            if(e.getSource()==var.getBtn00())
+            if(e.getSource()==btn00)
             {
-                var.getBtn00().setText(playerAsString);
+                btn00.setFont(new Font("Courier", Font.BOLD,90));
+                btn00.setText(playerAsString);
                 field[0][0] = player;
-                var.getBtn00().setEnabled(false);
+                btn00.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
             }
@@ -191,6 +192,7 @@ public class Main
     public static void CheckWin()
     {
         turn ++;
+        boolean win;
         boolean checkHorizontals;
         boolean checkVerticals;
         boolean checkDiagonals;
@@ -213,9 +215,11 @@ public class Main
                 ((field[2][0] == 'X') && (field[1][1] == 'X') && (field[0][2] == 'X')) ||
                 ((field[2][0] == 'O') && (field[1][1] == 'O') && (field[0][2] == 'O')));
 
-       if((checkVerticals || checkHorizontals || checkDiagonals) || turn == 9)
+        win = (checkVerticals || checkHorizontals || checkDiagonals);
+
+       if(win || turn == 9)
        {
-           FinishGame();
+           FinishGame(win);
        }
 
     }
@@ -230,9 +234,10 @@ public class Main
         return player;
     }
 
-    private static void FinishGame()
+    private static void FinishGame(boolean win)
     {
-        if(turn!=9)
+
+        if(win)
         {
             JOptionPane.showMessageDialog(null, "The winner is " + player + ".", "Win",JOptionPane.INFORMATION_MESSAGE);
         }
@@ -241,6 +246,7 @@ public class Main
 
         if(JOptionPane.showConfirmDialog(null, "Would you like to play again?", "Retry?", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
         {
+            //var.setKeepGoing
             keepGoing = false;
         }
 
