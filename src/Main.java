@@ -1,5 +1,5 @@
 import javax.swing.*;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,7 +14,7 @@ public class Main
 
     public Main()
     {
-        //JButton btn00 = new JButton();
+        //JButton btn00;
         Variables var = new Variables();
         //var.setBtn00(btn00);
 
@@ -96,6 +96,7 @@ public class Main
 
             else if(e.getSource()==btn01)
             {
+                btn01.setFont(new Font("Courier", Font.BOLD,90));
                 btn01.setText(playerAsString);
                 field[0][1] = player;
                 btn01.setEnabled(false);
@@ -105,6 +106,7 @@ public class Main
 
             else if(e.getSource()==btn02)
             {
+                btn02.setFont(new Font("Courier", Font.BOLD,90));
                 btn02.setText(playerAsString);
                 field[0][2] = player;
                 btn02.setEnabled(false);
@@ -114,6 +116,7 @@ public class Main
 
             else if(e.getSource()==btn10)
             {
+                btn10.setFont(new Font("Courier", Font.BOLD,90));
                 btn10.setText(playerAsString);
                 field[1][0] = player;
                 btn10.setEnabled(false);
@@ -123,6 +126,7 @@ public class Main
 
             else if(e.getSource()==btn11)
             {
+                btn11.setFont(new Font("Courier", Font.BOLD,90));
                 btn11.setText(playerAsString);
                 field[1][1] = player;
                 btn11.setEnabled(false);
@@ -132,6 +136,7 @@ public class Main
 
             else if(e.getSource()==btn12)
             {
+                btn12.setFont(new Font("Courier", Font.BOLD,90));
                 btn12.setText(playerAsString);
                 field[1][2] = player;
                 btn12.setEnabled(false);
@@ -141,6 +146,7 @@ public class Main
 
             else if(e.getSource()==btn20)
             {
+                btn20.setFont(new Font("Courier", Font.BOLD,90));
                 btn20.setText(playerAsString);
                 field[2][0] = player;
                 btn20.setEnabled(false);
@@ -150,6 +156,7 @@ public class Main
 
             else if(e.getSource()==btn21)
             {
+                btn21.setFont(new Font("Courier", Font.BOLD,90));
                 btn21.setText(playerAsString);
                 field[2][1] = player;
                 btn21.setEnabled(false);
@@ -159,6 +166,7 @@ public class Main
 
             else if(e.getSource()==btn22)
             {
+                btn22.setFont(new Font("Courier", Font.BOLD,90));
                 btn22.setText(playerAsString);
                 field[2][2] = player;
                 btn22.setEnabled(false);
@@ -168,6 +176,7 @@ public class Main
 
             if (!keepGoing)
             {
+
                 jFrameWindow.dispose();
                 keepGoing = true;
                 turn = 0;

@@ -57,12 +57,14 @@ public class Variables
         this.jFrameWindow = jFrameWindow;
     }
 
-    public JButton getBtn00() {
+    public JButton getBtn00()
+    {
         return btn00;
     }
 
-    public void setBtn00(JButton btn00) {
-        this.btn00 = btn00;
+    public void setBtn00(JButton btn00)
+    {
+        this.btn00 = btn00 = new JButton();
     }
 
     public JButton getBtn01() {
