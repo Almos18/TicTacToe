@@ -192,22 +192,36 @@ public class Main
     {
         turn ++;
         boolean win;
-        boolean checkHorizontals;
-        boolean checkVerticals;
+        boolean checkHorizontals = false;
+        boolean checkVerticals = false;
         boolean checkDiagonals;
-        checkVerticals = (((field[0][0] == 'X') && (field[0][1] == 'X') && (field[0][2] == 'X')) ||
-                ((field[0][0] == 'O') && (field[0][1] == 'O') && (field[0][2] == 'O')) ||
-                ((field[1][0] == 'X') && (field[1][1] == 'X') && (field[1][2] == 'X')) ||
-                ((field[1][0] == 'O') && (field[1][1] == 'O') && (field[1][2] == 'O')) ||
-                ((field[2][0] == 'X') && (field[2][1] == 'X') && (field[2][2] == 'X')) ||
-                ((field[2][0] == 'O') && (field[2][1] == 'O') && (field[2][2] == 'O')));
 
-        checkHorizontals = (((field[0][0] == 'X') && (field[1][0] == 'X') && (field[2][0] == 'X')) ||
-                ((field[0][1] == 'O') && (field[1][1] == 'O') && (field[2][1] == 'O')) ||
-                ((field[0][2] == 'X') && (field[1][2] == 'X') && (field[2][2] == 'X')) ||
-                ((field[0][0] == 'O') && (field[1][0] == 'O') && (field[2][0] == 'O')) ||
-                ((field[0][1] == 'X') && (field[1][1] == 'X') && (field[2][1] == 'X')) ||
-                ((field[0][2] == 'O') && (field[1][2] == 'O') && (field[2][2] == 'O')));
+
+        for (int i=0;i<=2;i++)
+        {
+
+            if(field[i][0] == 'O' && field[i][1] == 'O' && field[i][2] == 'O')
+            {
+                checkVerticals = true;
+            }
+
+            if(field[i][0] == 'X' && field[i][1] == 'X' && field[i][2] == 'X')
+            {
+                checkVerticals = true;
+            }
+
+            if(field[0][i] == 'O' && field[1][i] == 'O' && field[2][i] == 'O')
+            {
+                checkHorizontals = true;
+            }
+
+            if(field[0][i] == 'X' && field[1][i] == 'X' && field[2][i] == 'X')
+            {
+                checkHorizontals = true;
+            }
+
+        }
+
 
         checkDiagonals = (((field[0][0] == 'X') && (field[1][1] == 'X') && (field[2][2] == 'X')) ||
                 ((field[0][0] == 'O') && (field[1][1] == 'O') && (field[2][2] == 'O')) ||
