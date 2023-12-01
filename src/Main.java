@@ -79,7 +79,7 @@ public class Main
 
     private class DisplayField implements ActionListener
     {
-        Variables var = new Variables();
+        //Variables var = new Variables();
         public void actionPerformed(ActionEvent e)
         {
             String playerAsString = String.valueOf(player);
@@ -221,7 +221,6 @@ public class Main
             }
 
         }
-
 
         checkDiagonals = (((field[0][0] == 'X') && (field[1][1] == 'X') && (field[2][2] == 'X')) ||
                 ((field[0][0] == 'O') && (field[1][1] == 'O') && (field[2][2] == 'O')) ||
