@@ -15,9 +15,6 @@ public class Main
 
     public Main()
     {
-        //JButton btn00;
-        //Variables var = new Variables();
-        //var.setBtn00(btn00);
 
         jFrameWindow = new JFrame("TicTacToe");
 
@@ -79,7 +76,7 @@ public class Main
 
     private class DisplayField implements ActionListener
     {
-        //Variables var = new Variables();
+
         public void actionPerformed(ActionEvent e)
         {
             String playerAsString = String.valueOf(player);
