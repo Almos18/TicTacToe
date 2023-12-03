@@ -83,8 +83,10 @@ public class Main
 
             if(e.getSource()==btn00)
             {
+
                 btn00.setFont(new Font(fontStyle, Font.BOLD,90));
                 btn00.setText(playerAsString);
+                setColour(btn00);
                 field[0][0] = player;
                 btn00.setEnabled(false);
                 CheckWin();
@@ -95,6 +97,7 @@ public class Main
             {
                 btn01.setFont(new Font(fontStyle, Font.BOLD,90));
                 btn01.setText(playerAsString);
+                setColour(btn01);
                 field[0][1] = player;
                 btn01.setEnabled(false);
                 CheckWin();
@@ -105,6 +108,7 @@ public class Main
             {
                 btn02.setFont(new Font(fontStyle, Font.BOLD,90));
                 btn02.setText(playerAsString);
+                setColour(btn02);
                 field[0][2] = player;
                 btn02.setEnabled(false);
                 CheckWin();
@@ -115,6 +119,7 @@ public class Main
             {
                 btn10.setFont(new Font(fontStyle, Font.BOLD,90));
                 btn10.setText(playerAsString);
+                setColour(btn10);
                 field[1][0] = player;
                 btn10.setEnabled(false);
                 CheckWin();
@@ -125,6 +130,7 @@ public class Main
             {
                 btn11.setFont(new Font(fontStyle, Font.BOLD,90));
                 btn11.setText(playerAsString);
+                setColour(btn11);
                 field[1][1] = player;
                 btn11.setEnabled(false);
                 CheckWin();
@@ -135,6 +141,7 @@ public class Main
             {
                 btn12.setFont(new Font(fontStyle, Font.BOLD,90));
                 btn12.setText(playerAsString);
+                setColour(btn12);
                 field[1][2] = player;
                 btn12.setEnabled(false);
                 CheckWin();
@@ -145,6 +152,7 @@ public class Main
             {
                 btn20.setFont(new Font(fontStyle, Font.BOLD,90));
                 btn20.setText(playerAsString);
+                setColour(btn20);
                 field[2][0] = player;
                 btn20.setEnabled(false);
                 CheckWin();
@@ -155,6 +163,7 @@ public class Main
             {
                 btn21.setFont(new Font(fontStyle, Font.BOLD,90));
                 btn21.setText(playerAsString);
+                setColour(btn21);
                 field[2][1] = player;
                 btn21.setEnabled(false);
                 CheckWin();
@@ -165,6 +174,7 @@ public class Main
             {
                 btn22.setFont(new Font(fontStyle, Font.BOLD,90));
                 btn22.setText(playerAsString);
+                setColour(btn22);
                 field[2][2] = player;
                 btn22.setEnabled(false);
                 CheckWin();
@@ -173,14 +183,12 @@ public class Main
 
             if (!keepGoing)
             {
-
                 jFrameWindow.dispose();
                 keepGoing = true;
                 turn = 0;
                 field = new char[3][3];
                 player = 'O';
                 Main guiApp = new Main();
-
             }
         }
     }
@@ -243,9 +251,16 @@ public class Main
         return player;
     }
 
+    private static void setColour(JButton btn)
+    {
+        if(player == 'O')
+            btn.setBackground(Color.BLUE);
+        else
+            btn.setBackground(Color.RED);
+    }
+
     private static void FinishGame(boolean win)
     {
-
         if(win)
         {
             JOptionPane.showMessageDialog(null, "The winner is " + player + ".", "Win",JOptionPane.INFORMATION_MESSAGE);
@@ -255,13 +270,12 @@ public class Main
 
         if(JOptionPane.showConfirmDialog(null, "Would you like to play again?", "Retry?", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
         {
-            //var.setKeepGoing
             keepGoing = false;
         }
 
-        else {
+        else
+        {
             System.exit(0);
         }
-
     }
 }
