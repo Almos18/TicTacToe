@@ -31,38 +31,47 @@ public class Main
         Main.DisplayField selectMove = new Main.DisplayField();
 
         btn00 = new JButton();
+        btn00.setFont(new Font(fontStyle, Font.BOLD,90));
         jFrameWindow.add(btn00);
         btn00.addActionListener(selectMove);
 
         btn01 = new JButton();
+        btn01.setFont(new Font(fontStyle, Font.BOLD,90));
         jFrameWindow.add(btn01);
         btn01.addActionListener(selectMove);
 
         btn02 = new JButton();
+        btn02.setFont(new Font(fontStyle, Font.BOLD,90));
         jFrameWindow.add(btn02);
         btn02.addActionListener(selectMove);
 
         btn10 = new JButton();
+        btn10.setFont(new Font(fontStyle, Font.BOLD,90));
         jFrameWindow.add(btn10);
         btn10.addActionListener(selectMove);
 
         btn11 = new JButton();
+        btn11.setFont(new Font(fontStyle, Font.BOLD,90));
         jFrameWindow.add(btn11);
         btn11.addActionListener(selectMove);
 
         btn12 = new JButton();
+        btn12.setFont(new Font(fontStyle, Font.BOLD,90));
         jFrameWindow.add(btn12);
         btn12.addActionListener(selectMove);
 
         btn20 = new JButton();
+        btn20.setFont(new Font(fontStyle, Font.BOLD,90));
         jFrameWindow.add(btn20);
         btn20.addActionListener(selectMove);
 
         btn21 = new JButton();
+        btn21.setFont(new Font(fontStyle, Font.BOLD,90));
         jFrameWindow.add(btn21);
         btn21.addActionListener(selectMove);
 
         btn22 = new JButton();
+        btn22.setFont(new Font(fontStyle, Font.BOLD,90));
         jFrameWindow.add(btn22);
         btn22.addActionListener(selectMove);
 
@@ -84,7 +93,6 @@ public class Main
             if(e.getSource()==btn00)
             {
 
-                btn00.setFont(new Font(fontStyle, Font.BOLD,90));
                 btn00.setText(playerAsString);
                 setColour(btn00);
                 field[0][0] = player;
@@ -95,7 +103,6 @@ public class Main
 
             else if(e.getSource()==btn01)
             {
-                btn01.setFont(new Font(fontStyle, Font.BOLD,90));
                 btn01.setText(playerAsString);
                 setColour(btn01);
                 field[0][1] = player;
@@ -106,7 +113,6 @@ public class Main
 
             else if(e.getSource()==btn02)
             {
-                btn02.setFont(new Font(fontStyle, Font.BOLD,90));
                 btn02.setText(playerAsString);
                 setColour(btn02);
                 field[0][2] = player;
@@ -117,7 +123,6 @@ public class Main
 
             else if(e.getSource()==btn10)
             {
-                btn10.setFont(new Font(fontStyle, Font.BOLD,90));
                 btn10.setText(playerAsString);
                 setColour(btn10);
                 field[1][0] = player;
@@ -128,7 +133,6 @@ public class Main
 
             else if(e.getSource()==btn11)
             {
-                btn11.setFont(new Font(fontStyle, Font.BOLD,90));
                 btn11.setText(playerAsString);
                 setColour(btn11);
                 field[1][1] = player;
@@ -139,7 +143,6 @@ public class Main
 
             else if(e.getSource()==btn12)
             {
-                btn12.setFont(new Font(fontStyle, Font.BOLD,90));
                 btn12.setText(playerAsString);
                 setColour(btn12);
                 field[1][2] = player;
@@ -150,7 +153,6 @@ public class Main
 
             else if(e.getSource()==btn20)
             {
-                btn20.setFont(new Font(fontStyle, Font.BOLD,90));
                 btn20.setText(playerAsString);
                 setColour(btn20);
                 field[2][0] = player;
@@ -161,7 +163,6 @@ public class Main
 
             else if(e.getSource()==btn21)
             {
-                btn21.setFont(new Font(fontStyle, Font.BOLD,90));
                 btn21.setText(playerAsString);
                 setColour(btn21);
                 field[2][1] = player;
@@ -172,7 +173,6 @@ public class Main
 
             else if(e.getSource()==btn22)
             {
-                btn22.setFont(new Font(fontStyle, Font.BOLD,90));
                 btn22.setText(playerAsString);
                 setColour(btn22);
                 field[2][2] = player;
