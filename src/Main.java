@@ -183,6 +183,7 @@ public class Main
 
             if (!keepGoing)
             {
+
                 jFrameWindow.dispose();
                 keepGoing = true;
                 turn = 0;
