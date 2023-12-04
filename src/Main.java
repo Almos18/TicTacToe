@@ -94,7 +94,7 @@ public class Main
             {
 
                 btn00.setText(playerAsString);
-                setColour(btn00);
+                SetColour(btn00);
                 field[0][0] = player;
                 btn00.setEnabled(false);
                 CheckWin();
@@ -104,7 +104,7 @@ public class Main
             else if(e.getSource()==btn01)
             {
                 btn01.setText(playerAsString);
-                setColour(btn01);
+                SetColour(btn01);
                 field[0][1] = player;
                 btn01.setEnabled(false);
                 CheckWin();
@@ -114,7 +114,7 @@ public class Main
             else if(e.getSource()==btn02)
             {
                 btn02.setText(playerAsString);
-                setColour(btn02);
+                SetColour(btn02);
                 field[0][2] = player;
                 btn02.setEnabled(false);
                 CheckWin();
@@ -124,7 +124,7 @@ public class Main
             else if(e.getSource()==btn10)
             {
                 btn10.setText(playerAsString);
-                setColour(btn10);
+                SetColour(btn10);
                 field[1][0] = player;
                 btn10.setEnabled(false);
                 CheckWin();
@@ -134,7 +134,7 @@ public class Main
             else if(e.getSource()==btn11)
             {
                 btn11.setText(playerAsString);
-                setColour(btn11);
+                SetColour(btn11);
                 field[1][1] = player;
                 btn11.setEnabled(false);
                 CheckWin();
@@ -144,7 +144,7 @@ public class Main
             else if(e.getSource()==btn12)
             {
                 btn12.setText(playerAsString);
-                setColour(btn12);
+                SetColour(btn12);
                 field[1][2] = player;
                 btn12.setEnabled(false);
                 CheckWin();
@@ -154,7 +154,7 @@ public class Main
             else if(e.getSource()==btn20)
             {
                 btn20.setText(playerAsString);
-                setColour(btn20);
+                SetColour(btn20);
                 field[2][0] = player;
                 btn20.setEnabled(false);
                 CheckWin();
@@ -164,7 +164,7 @@ public class Main
             else if(e.getSource()==btn21)
             {
                 btn21.setText(playerAsString);
-                setColour(btn21);
+                SetColour(btn21);
                 field[2][1] = player;
                 btn21.setEnabled(false);
                 CheckWin();
@@ -174,7 +174,7 @@ public class Main
             else if(e.getSource()==btn22)
             {
                 btn22.setText(playerAsString);
-                setColour(btn22);
+                SetColour(btn22);
                 field[2][2] = player;
                 btn22.setEnabled(false);
                 CheckWin();
@@ -183,7 +183,6 @@ public class Main
 
             if (!keepGoing)
             {
-
                 jFrameWindow.dispose();
                 keepGoing = true;
                 turn = 0;
@@ -252,7 +251,7 @@ public class Main
         return player;
     }
 
-    private static void setColour(JButton btn)
+    private static void SetColour(JButton btn)
     {
         if(player == 'O')
             btn.setBackground(Color.BLUE);
