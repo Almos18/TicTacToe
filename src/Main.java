@@ -76,7 +76,6 @@ public class Main
         btn22.addActionListener(selectMove);
 
         jFrameWindow.setVisible(true);
-
     }
 
     public static void main(String[] args)
