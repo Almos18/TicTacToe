@@ -190,6 +190,7 @@ public class Main
                 player = 'O';
                 Main guiApp = new Main();
             }
+
         }
     }
 
