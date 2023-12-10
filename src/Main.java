@@ -269,6 +269,7 @@ public class Main
         else
             JOptionPane.showMessageDialog(null, "The game is a draw", "Draw", JOptionPane.INFORMATION_MESSAGE);
 
+
         if(JOptionPane.showConfirmDialog(null, "Would you like to play again?", "Retry?", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
         {
             keepGoing = false;
