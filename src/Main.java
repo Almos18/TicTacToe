@@ -252,6 +252,7 @@ public class Main
         return player;
     }
 
+
     private static void SetColour(JButton btn)
     {
         if(player == 'O')
