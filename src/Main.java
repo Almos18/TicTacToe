@@ -258,6 +258,7 @@ public class Main
 
         if(player == 'O')
             btn.setBackground(Color.BLUE);
+
         else
             btn.setBackground(Color.RED);
     }
