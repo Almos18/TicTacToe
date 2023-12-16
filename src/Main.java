@@ -246,6 +246,7 @@ public class Main
     {
         if(player=='O')
             player = 'X';
+
         else
             player = 'O';
 
