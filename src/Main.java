@@ -237,6 +237,7 @@ public class Main
 
        if(win || turn == 9)
        {
+
            FinishGame(win);
        }
 
