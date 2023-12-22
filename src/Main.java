@@ -272,7 +272,6 @@ public class Main
             JOptionPane.showMessageDialog(null, "The winner is " + player + ".", "Win",JOptionPane.INFORMATION_MESSAGE);
         }
         else
-
             JOptionPane.showMessageDialog(null, "The game is a draw", "Draw", JOptionPane.INFORMATION_MESSAGE);
 
 
