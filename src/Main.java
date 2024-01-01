@@ -277,6 +277,7 @@ public class Main
 
         if(JOptionPane.showConfirmDialog(null, "Would you like to play again?", "Retry?", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
         {
+
             keepGoing = false;
         }
 
