@@ -261,6 +261,7 @@ public class Main
             btn.setBackground(Color.BLUE);
 
         else
+
             btn.setBackground(Color.RED);
     }
 
