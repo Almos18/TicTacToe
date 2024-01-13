@@ -249,6 +249,7 @@ public class Main
             player = 'X';
 
         else
+
             player = 'O';
 
         return player;
