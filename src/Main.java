@@ -270,6 +270,7 @@ public class Main
     {
         if(win)
         {
+
             JOptionPane.showMessageDialog(null, "The winner is " + player + ".", "Win",JOptionPane.INFORMATION_MESSAGE);
         }
         else
