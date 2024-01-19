@@ -259,6 +259,7 @@ public class Main
     private static void SetColour(JButton btn)
     {
         if(player == 'O')
+
             btn.setBackground(Color.BLUE);
 
         else
