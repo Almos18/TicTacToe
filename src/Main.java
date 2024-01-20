@@ -99,7 +99,6 @@ public class Main
                 btn00.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
-                CPUTurn();
             }
 
             else if(e.getSource()==btn01)
@@ -110,7 +109,6 @@ public class Main
                 btn01.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
-                CPUTurn();
             }
 
             else if(e.getSource()==btn02)
@@ -121,7 +119,6 @@ public class Main
                 btn02.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
-                CPUTurn();
             }
 
             else if(e.getSource()==btn10)
@@ -132,7 +129,6 @@ public class Main
                 btn10.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
-                CPUTurn();
             }
 
             else if(e.getSource()==btn11)
@@ -143,7 +139,6 @@ public class Main
                 btn11.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
-                CPUTurn();
             }
 
             else if(e.getSource()==btn12)
@@ -154,7 +149,6 @@ public class Main
                 btn12.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
-                CPUTurn();
             }
 
             else if(e.getSource()==btn20)
@@ -165,7 +159,6 @@ public class Main
                 btn20.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
-                CPUTurn();
             }
 
             else if(e.getSource()==btn21)
@@ -176,7 +169,6 @@ public class Main
                 btn21.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
-                CPUTurn();
             }
 
             else if(e.getSource()==btn22)
@@ -187,7 +179,6 @@ public class Main
                 btn22.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
-                CPUTurn();
             }
 
             if (!keepGoing)
@@ -199,6 +190,7 @@ public class Main
                 player = 'O';
                 Main guiApp = new Main();
             }
+            CPUTurn();
 
         }
     }
@@ -256,91 +248,83 @@ public class Main
 
     public void CPUTurn()
     {
-        int CPUPosition = (int) (Math.random() * (8-1) +1);
 
-        switch (CPUPosition)
+        while (player != 'O')
         {
-            case 1:
+            int CPUPosition = (int) (Math.random() * (10-1) + 1);
+
+            if (CPUPosition == 1 && (field[0][0] != 'O' && field[0][0] != 'X')) {
                 btn00.setText("X");
                 SetColour(btn00);
-                field[0][0] = player;
+                field[0][0] = 'X';
                 btn00.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
-                break;
-
-            case 2:
+            }
+            else if (CPUPosition == 2 && (field[0][1] != 'O' && field[0][1] != 'X')) {
                 btn01.setText("X");
                 SetColour(btn01);
-                field[0][1] = player;
+                field[0][1] = 'X';
                 btn01.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
-                break;
-
-            case 3:
+            }
+            else if (CPUPosition == 3 && (field[0][2] != 'O' && field[0][2] != 'X')) {
                 btn02.setText("X");
                 SetColour(btn02);
-                field[0][2] = player;
+                field[0][2] = 'X';
                 btn02.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
-                break;
-
-            case 4:
+            }
+            else if (CPUPosition == 4 && (field[1][0] != 'O' && field[1][0] != 'X')) {
                 btn10.setText("X");
                 SetColour(btn10);
-                field[1][0] = player;
+                field[1][0] = 'X';
                 btn10.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
-                break;
-
-            case 5:
+            }
+            else if (CPUPosition == 5 && (field[1][1] != 'O' && field[1][1] != 'X')) {
                 btn11.setText("X");
                 SetColour(btn11);
-                field[1][1] = player;
+                field[1][1] = 'X';
                 btn11.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
-                break;
-
-            case 6:
+            }
+            else if (CPUPosition == 6 && (field[1][2] != 'O' && field[1][2] != 'X')) {
                 btn12.setText("X");
                 SetColour(btn12);
-                field[1][2] = player;
+                field[1][2] = 'X';
                 btn12.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
-                break;
-
-            case 7:
+            }
+            else if (CPUPosition == 7 && (field[2][0] != 'O' && field[2][0] != 'X')) {
                 btn20.setText("X");
                 SetColour(btn20);
-                field[2][0] = player;
+                field[2][0] = 'X';
                 btn20.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
-                break;
-
-            case 8:
+            }
+            else if (CPUPosition == 8 && (field[2][1] != 'O' && field[2][1] != 'X')) {
                 btn21.setText("X");
                 SetColour(btn21);
-                field[2][1] = player;
+                field[2][1] = 'X';
                 btn21.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
-                break;
-
-            case 9:
+            }
+            else if (CPUPosition == 9 && (field[2][2] != 'O' && field[2][2] != 'X')) {
                 btn22.setText("X");
                 SetColour(btn22);
-                field[2][2] = player;
+                field[2][2] = 'X';
                 btn22.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
-                break;
-
+                }
         }
 
     }
@@ -351,7 +335,6 @@ public class Main
             player = 'X';
 
         else
-
             player = 'O';
 
         return player;
