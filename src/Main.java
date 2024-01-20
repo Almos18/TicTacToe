@@ -99,6 +99,7 @@ public class Main
                 btn00.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
+                CPUTurn();
             }
 
             else if(e.getSource()==btn01)
@@ -109,6 +110,7 @@ public class Main
                 btn01.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
+                CPUTurn();
             }
 
             else if(e.getSource()==btn02)
@@ -119,6 +121,7 @@ public class Main
                 btn02.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
+                CPUTurn();
             }
 
             else if(e.getSource()==btn10)
@@ -129,6 +132,7 @@ public class Main
                 btn10.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
+                CPUTurn();
             }
 
             else if(e.getSource()==btn11)
@@ -139,6 +143,7 @@ public class Main
                 btn11.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
+                CPUTurn();
             }
 
             else if(e.getSource()==btn12)
@@ -149,6 +154,7 @@ public class Main
                 btn12.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
+                CPUTurn();
             }
 
             else if(e.getSource()==btn20)
@@ -159,6 +165,7 @@ public class Main
                 btn20.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
+                CPUTurn();
             }
 
             else if(e.getSource()==btn21)
@@ -169,6 +176,7 @@ public class Main
                 btn21.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
+                CPUTurn();
             }
 
             else if(e.getSource()==btn22)
@@ -179,6 +187,7 @@ public class Main
                 btn22.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
+                CPUTurn();
             }
 
             if (!keepGoing)
@@ -228,6 +237,8 @@ public class Main
 
         }
 
+
+
         checkDiagonals = (((field[0][0] == 'X') && (field[1][1] == 'X') && (field[2][2] == 'X')) ||
                 ((field[0][0] == 'O') && (field[1][1] == 'O') && (field[2][2] == 'O')) ||
                 ((field[2][0] == 'X') && (field[1][1] == 'X') && (field[0][2] == 'X')) ||
@@ -240,6 +251,97 @@ public class Main
 
            FinishGame(win);
        }
+
+    }
+
+    public void CPUTurn()
+    {
+        int CPUPosition = (int) (Math.random() * (8-1) +1);
+
+        switch (CPUPosition)
+        {
+            case 1:
+                btn00.setText("X");
+                SetColour(btn00);
+                field[0][0] = player;
+                btn00.setEnabled(false);
+                CheckWin();
+                player = SwapPlayer(player);
+                break;
+
+            case 2:
+                btn01.setText("X");
+                SetColour(btn01);
+                field[0][1] = player;
+                btn01.setEnabled(false);
+                CheckWin();
+                player = SwapPlayer(player);
+                break;
+
+            case 3:
+                btn02.setText("X");
+                SetColour(btn02);
+                field[0][2] = player;
+                btn02.setEnabled(false);
+                CheckWin();
+                player = SwapPlayer(player);
+                break;
+
+            case 4:
+                btn10.setText("X");
+                SetColour(btn10);
+                field[1][0] = player;
+                btn10.setEnabled(false);
+                CheckWin();
+                player = SwapPlayer(player);
+                break;
+
+            case 5:
+                btn11.setText("X");
+                SetColour(btn11);
+                field[1][1] = player;
+                btn11.setEnabled(false);
+                CheckWin();
+                player = SwapPlayer(player);
+                break;
+
+            case 6:
+                btn12.setText("X");
+                SetColour(btn12);
+                field[1][2] = player;
+                btn12.setEnabled(false);
+                CheckWin();
+                player = SwapPlayer(player);
+                break;
+
+            case 7:
+                btn20.setText("X");
+                SetColour(btn20);
+                field[2][0] = player;
+                btn20.setEnabled(false);
+                CheckWin();
+                player = SwapPlayer(player);
+                break;
+
+            case 8:
+                btn21.setText("X");
+                SetColour(btn21);
+                field[2][1] = player;
+                btn21.setEnabled(false);
+                CheckWin();
+                player = SwapPlayer(player);
+                break;
+
+            case 9:
+                btn22.setText("X");
+                SetColour(btn22);
+                field[2][2] = player;
+                btn22.setEnabled(false);
+                CheckWin();
+                player = SwapPlayer(player);
+                break;
+
+        }
 
     }
 
