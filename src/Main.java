@@ -183,12 +183,7 @@ public class Main
 
             if (!keepGoing)
             {
-                jFrameWindow.dispose();
-                keepGoing = true;
-                turn = 0;
-                field = new char[3][3];
-                player = 'O';
-                Main guiApp = new Main();
+                resetGame();
             }
             CPUTurn();
 
@@ -240,10 +235,19 @@ public class Main
 
        if(win || turn == 9)
        {
-
            FinishGame(win);
        }
 
+    }
+
+    public void resetGame()
+    {
+        jFrameWindow.dispose();
+        keepGoing = true;
+        turn = 0;
+        field = new char[3][3];
+        player = 'O';
+        Main guiApp = new Main();
     }
 
     public void CPUTurn()
@@ -317,14 +321,19 @@ public class Main
                 CheckWin();
                 player = SwapPlayer(player);
             }
-            else if (CPUPosition == 9 && (field[2][2] != 'O' && field[2][2] != 'X')) {
+            else if (CPUPosition == 9 && (field[2][2] != 'O' && field[2][2] != 'X'))
+            {
                 btn22.setText("X");
                 SetColour(btn22);
                 field[2][2] = 'X';
                 btn22.setEnabled(false);
                 CheckWin();
                 player = SwapPlayer(player);
-                }
+            }
+            if (!keepGoing)
+            {
+                resetGame();
+            }
         }
 
     }
