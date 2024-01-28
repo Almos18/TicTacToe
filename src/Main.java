@@ -231,6 +231,7 @@ public class Main
                 ((field[2][0] == 'O') && (field[1][1] == 'O') && (field[0][2] == 'O')));
 
 
+
         win = (checkVerticals || checkHorizontals || checkDiagonals);
 
        if(win || turn == 9)
