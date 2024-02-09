@@ -242,6 +242,7 @@ public class Main
 
     public void resetGame()
     {
+
         jFrameWindow.dispose();
         keepGoing = true;
         turn = 0;
