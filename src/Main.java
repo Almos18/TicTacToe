@@ -254,6 +254,7 @@ public class Main
         {
             int CPUPosition = (int) (Math.random() * (10-1) + 1);
 
+
             if (CPUPosition == 1 && (field[0][0] != 'O' && field[0][0] != 'X')) {
                 btn00.setText("X");
                 SetColour(btn00);
