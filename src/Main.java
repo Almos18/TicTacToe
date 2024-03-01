@@ -335,6 +335,7 @@ public class Main
 
     }
 
+
     private static char SwapPlayer(char player)
     {
         if(player=='O')
