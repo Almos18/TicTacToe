@@ -249,7 +249,6 @@ public class Main
 
     public void CPUTurn()
     {
-
         while (player != 'O')
         {
             int CPUPosition = (int) (Math.random() * (10-1) + 1);
