@@ -220,7 +220,6 @@ public class Main
             {
                 checkHorizontals = true;
             }
-
         }
 
         checkDiagonals = (((field[0][0] == 'X') && (field[1][1] == 'X') && (field[2][2] == 'X')) ||
