@@ -200,7 +200,6 @@ public class Main
 
         for (int i=0;i<=2;i++)
         {
-
             if(field[i][0] == 'O' && field[i][1] == 'O' && field[i][2] == 'O')
             {
                 checkVerticals = true;
