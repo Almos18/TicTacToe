@@ -185,7 +185,6 @@ public class Main
             {
                 resetGame();
             }
-
             CPUTurn();
 
         }
