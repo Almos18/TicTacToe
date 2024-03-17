@@ -181,7 +181,6 @@ public class Main
                 player = SwapPlayer(player);
             }
 
-
             if (!keepGoing)
             {
                 resetGame();
