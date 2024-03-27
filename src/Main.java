@@ -193,7 +193,6 @@ public class Main
     public static void CheckWin()
     {
 
-
         turn ++;
         boolean win;
         boolean checkHorizontals = false;
