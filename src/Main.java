@@ -16,6 +16,7 @@ public class Main
     public Main()
     {
 
+
         jFrameWindow = new JFrame("TicTacToe");
 
         GridLayout flowLayout = new GridLayout(3,3);
