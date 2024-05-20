@@ -86,6 +86,7 @@ public class Main
     private class DisplayField implements ActionListener
     {
 
+
         public void actionPerformed(ActionEvent e)
         {
             String playerAsString = String.valueOf(player);
