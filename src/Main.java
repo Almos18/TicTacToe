@@ -101,7 +101,6 @@ public class Main
             }
 
 
-
             else if(e.getSource()==btn01)
             {
                 btn01.setText(playerAsString);
