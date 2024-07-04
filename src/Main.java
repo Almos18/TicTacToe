@@ -100,8 +100,6 @@ public class Main
                 player = SwapPlayer(player);
             }
 
-
-
             else if(e.getSource()==btn01)
             {
                 btn01.setText(playerAsString);
